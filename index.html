@@ -1,1 +1,24 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soccer Penalty Shootout</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>Soccer Penalty Shootout!</h1>
+    <div class="goal-area">
+      <div class="goal" id="goal"></div>
+      <img src="soccer-ball.png" alt="Soccer Ball" class="soccer-ball" id="soccer-ball">
+    </div>
+    <button onclick="shoot('left')">Shoot Left</button>
+    <button onclick="shoot('center')">Shoot Center</button>
+    <button onclick="shoot('right')">Shoot Right</button>
+    <p id="message"></p>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

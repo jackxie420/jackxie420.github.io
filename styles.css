@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin: 0;
+  }
+  
+  .game-container {
+    padding: 20px;
+  }
+  
+  .goal-area {
+    margin: 20px auto;
+    position: relative;
+    width: 400px;
+    height: 200px;
+    background-color: green;
+    border: 2px solid #000;
+    background-image: url('goal-net.png');
+    background-size: cover;
+  }
+  
+  .soccer-ball {
+    position: absolute;
+    bottom: -40px;
+    left: 180px;
+    width: 40px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  
+  #message {
+    font-size: 18px;
+    color: #333;
+  }
+  
