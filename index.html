@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Item Listing</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inspiration Gallery</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>List Your Item</h1>
-  <form id="uploadForm">
-    <input type="file" id="itemImage" accept="image/*" required>
-    <input type="text" id="itemPrice" placeholder="Enter price" required>
-    <button type="submit">Upload</button>
-  </form>
-
-  <h2>Items for Sale</h2>
-  <div id="itemList" class="item-list"></div>
-
+  <div id="container">
+    <div id="quote-box">
+      <p id="quote">Loading...</p>
+      <button onclick="newQuote()">🔁 New Quote</button>
+    </div>
+    <button id="toggle-mode">🌓</button>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
