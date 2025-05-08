@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Item Listing</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>List Your Item</h1>
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="itemImage" accept="image/*" required>
+    <input type="text" name="price" placeholder="Enter price" required>
+    <button type="submit">Upload</button>
+  </form>
+
+  <h2>Items for Sale</h2>
+  <div class="item-list">
+    <% items.forEach(item => { %>
+      <div class="item">
+        <img src="<%= item.imagePath %>" alt="Item Image" />
+        <p>Price: $<%= item.price %></p>
+      </div>
+    <% }) %>
+  </div>
+</body>
+</html>
