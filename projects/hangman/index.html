@@ -110,7 +110,7 @@
     <div class="hangman-container">
       <div class="game-top">
         <div class="image-container">
-          <img src="Emi-Martinez-save.jpg" alt="Emi Martínez making a save">
+          <img src="assets/images/emi-martinez-save.jpg" alt="Emi Martínez making a save">
           <div class="caption">Emi Martínez's legendary save</div>
         </div>
         <div id="hangmanDrawing" class="hangman-drawing"></div>
@@ -124,7 +124,7 @@
     </div>
   </main>
   <script type="module">
-    import { WORDS } from './words.js';
+    import { WORDS } from './assets/js/words.js';
 
     const HANGMAN_PARTS = [
       // Gallows (5 parts)
@@ -163,7 +163,7 @@
       const showRope = incorrectCount > 3;
       const showSupport = incorrectCount > 4;
       // Face (Eric image)  
-      const ericImg = showHead ? `<image href='eric.png' x='53' y='28' width='54' height='54' class='hangman-face${showHead ? ' visible' : ''}' style='opacity:${showHead ? 1 : 0};transition:opacity 0.3s;' />` : '';
+      const ericImg = showHead ? `<image href='assets/images/eric.png' x='53' y='28' width='54' height='54' class='hangman-face${showHead ? ' visible' : ''}' style='opacity:${showHead ? 1 : 0};transition:opacity 0.3s;' />` : '';
       const svg = `
         <svg width="120" height="180" viewBox="0 0 120 180">
           <defs>
