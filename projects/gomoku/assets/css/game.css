@@ -1,0 +1,59 @@
+.gomoku-page { max-width: 1040px; margin: 0 auto; padding: 34px 24px 48px; }
+.game-header { margin: 6px 0 26px; }
+.game-kicker { margin: 0 0 5px; color: var(--blue-dark); font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.game-header h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.2; letter-spacing: -.035em; margin: 0 0 10px; }
+.game-header h1 span { color: var(--muted); font-size: .7em; font-weight: 500; letter-spacing: 0; }
+.game-header > p:last-child { color: var(--muted); margin: 0; }
+.game-layout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 28px; align-items: start; }
+.board-frame { padding: 16px; border-radius: 16px; background: linear-gradient(135deg, #f5e2bf, #e7c995); border: 1px solid #d8bc8d; box-shadow: 0 14px 30px -22px #74532d; }
+.board { display: grid; grid-template-columns: repeat(15, minmax(0, 1fr)); width: 100%; aspect-ratio: 1; background: url('../images/grid.svg') center / 100% 100% no-repeat; touch-action: manipulation; }
+.board-row { display: contents; }
+.intersection { display: grid; place-items: center; position: relative; appearance: none; min-width: 0; width: 100%; aspect-ratio: 1; border: 0; padding: 0; background: none; border-radius: 50%; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.intersection::before { content: ''; width: 86%; height: 86%; border-radius: 50%; opacity: 0; }
+.intersection.black::before { opacity: 1; background: radial-gradient(circle at 32% 25%, #626872, #222a34 55%, #101721); box-shadow: 1px 2px 3px #59432266, inset 0 0 0 1px #0004; }
+.intersection.white::before { opacity: 1; background: radial-gradient(circle at 32% 25%, #fff, #f4f5f3 50%, #d9dcd9); box-shadow: 1px 2px 3px #59432266, inset 0 0 0 1px #a1a39855; }
+.intersection.occupied { cursor: default; }
+.intersection.last-move::after { content: ''; position: absolute; width: 16%; height: 16%; border-radius: 50%; background: #e8923b; box-shadow: 0 0 0 1px #fff6; }
+.intersection.winning::before { box-shadow: 0 0 0 3px #2f86d4, 0 0 0 5px #fff7; }
+.intersection:focus-visible { outline: 2px solid var(--blue-dark); outline-offset: -1px; z-index: 1; }
+@media (hover: hover) {
+  .board[data-locked='false'][data-turn='1'] .intersection:not(.occupied):hover::before { opacity: .3; background: #1d2939; }
+  .board[data-locked='false'][data-turn='2'] .intersection:not(.occupied):hover::before { opacity: .6; background: #fff; }
+}
+.board-note { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; font-size: .76rem; color: var(--muted); margin: 12px 2px 0; }
+.game-sidebar { display: grid; gap: 18px; }
+.game-panel { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+.status-kicker { margin: 0 0 7px; color: var(--muted); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.game-status { margin: 0 0 7px; font-size: 1.2rem; line-height: 1.35; font-weight: 700; }
+.game-hint { margin: 0; font-size: .83rem; line-height: 1.5; color: var(--muted); min-height: 2.5em; }
+.players { display: flex; gap: 8px; margin: 20px 0; }
+.player { flex: 1; min-width: 0; padding: 10px 8px; border: 1px solid var(--line); border-radius: 9px; font-size: .75rem; color: var(--muted); }
+.player.active { background: var(--blue-soft); border-color: #a9cff2; color: var(--blue-dark); }
+.player strong { display: block; font-size: .8rem; margin-top: 5px; }
+.mini-stone { display: inline-block; width: 15px; height: 15px; border-radius: 50%; vertical-align: -3px; margin-right: 4px; }
+.mini-stone.black { background: #222a34; }
+.mini-stone.white { background: #fafaf8; border: 1px solid #bbc1c7; }
+.mode-label { display: block; font-weight: 600; font-size: .8rem; margin-bottom: 6px; }
+.game-panel select { width: 100%; min-height: 42px; font: .86rem var(--sans); color: var(--text); border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 8px; }
+.game-actions { display: flex; gap: 8px; margin-top: 12px; }
+.game-actions button { flex: 1; min-height: 42px; font: 600 .8rem var(--sans); border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--blue-dark); cursor: pointer; }
+.game-actions .primary { background: var(--blue-dark); border-color: var(--blue-dark); color: #fff; }
+.game-actions button:hover { filter: brightness(.95); }
+.game-actions button:disabled { opacity: .4; cursor: default; }
+.game-panel :is(button, select):focus-visible { outline: 2px solid var(--blue-dark); outline-offset: 3px; }
+.game-rules h2 { display: block; border: 0; padding: 0; margin: 0 0 8px; text-transform: none; letter-spacing: 0; font-size: .95rem; color: var(--text); }
+.game-rules p { font-size: .83rem; color: var(--muted); margin: 0 0 8px; }
+.game-rules p:last-child { margin-bottom: 0; }
+.game-rules kbd { font: .75rem var(--sans); border: 1px solid var(--line); border-radius: 4px; padding: 1px 4px; background: var(--bg); }
+@media (max-width: 740px) {
+  .game-layout { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .game-sidebar { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: 12px; }
+  .game-panel { padding: 16px; }
+}
+@media (max-width: 480px) {
+  .gomoku-page { padding: 24px 12px 32px; }
+  .game-header { margin-bottom: 20px; padding: 0 4px; }
+  .board-frame { padding: 8px; border-radius: 12px; }
+  .game-sidebar { grid-template-columns: minmax(0, 1fr); }
+  .players { margin: 14px 0; }
+}

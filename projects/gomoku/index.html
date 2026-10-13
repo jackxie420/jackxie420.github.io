@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>五子棋 · Gomoku · Haopeng (Jack) Xie</title>
+  <meta name="description" content="Play five in a row against the computer or a friend. A little game of 五子棋 by Haopeng (Jack) Xie.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234a9fe0'/><text x='50' y='66' font-size='46' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' fill='white'>JX</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/site.css?v=5fcada8d8a73">
+  <link rel="stylesheet" href="assets/css/game.css?v=ae0d66b6c815">
+</head>
+<body>
+  <nav class="topnav">
+    <div class="inner">
+      <a class="brand" href="../../">Haopeng (Jack) Xie</a>
+      <ul>
+        <li><a href="../../">Home</a></li>
+        <li><a href="../../research/">Research &amp; Publications</a></li>
+        <li><a href="../../experience/">Experience</a></li>
+        <li><a href="../" class="active">Fun Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="gomoku-page">
+    <a class="crumb" href="../">← All fun projects</a>
+    <header class="game-header">
+      <p class="game-kicker">A little strategy break</p>
+      <h1>五子棋 <span>Gomoku</span></h1>
+      <p>One board. Two colors. Five in a row.</p>
+    </header>
+    <div class="game-layout">
+      <div>
+        <div class="board-frame">
+          <div id="board" class="board" role="grid" aria-label="Gomoku board, 15 rows and 15 columns" aria-rowcount="15" aria-colcount="15" aria-describedby="board-instructions"></div>
+        </div>
+        <p class="board-note"><span id="move-count">0 stones played</span><span>Orange dot = last move</span></p>
+      </div>
+      <div class="game-sidebar">
+        <div class="game-panel">
+          <p class="status-kicker">Your next move</p>
+          <div role="status" aria-live="polite" aria-atomic="true">
+            <p id="game-status" class="game-status">Your turn · Black</p>
+            <p id="game-hint" class="game-hint">Black goes first. Choose an intersection.</p>
+          </div>
+          <div class="players">
+            <div id="black-side" class="player active"><span class="mini-stone black" aria-hidden="true"></span>Black<strong id="black-player">You</strong></div>
+            <div id="white-side" class="player"><span class="mini-stone white" aria-hidden="true"></span>White<strong id="white-player">Computer</strong></div>
+          </div>
+          <label for="game-mode" class="mode-label">Play with</label>
+          <select id="game-mode"><option value="computer">Computer</option><option value="local">A friend · same device</option></select>
+          <div class="game-actions"><button type="button" id="undo" disabled>Undo</button><button type="button" id="restart" class="primary">New game</button></div>
+        </div>
+        <div class="game-panel game-rules">
+          <h2>How to play</h2>
+          <p id="board-instructions">Place a stone on an empty intersection. Connect five horizontally, vertically, or diagonally to win.</p>
+          <p>Black starts. This is freestyle Gomoku: a line of more than five also wins. Changing mode starts a fresh game.</p>
+          <p>Using a keyboard? <kbd>Tab</kbd> to the board, move with the arrow keys, and press <kbd>Enter</kbd> or <kbd>Space</kbd> to place a stone.</p>
+        </div>
+      </div>
+    </div>
+    <noscript><p>This game needs JavaScript enabled to place stones.</p></noscript>
+  </main>
+  <footer><span>© <span id="year"></span> Haopeng (Jack) Xie</span><span>A small game, a long rivalry.</span></footer>
+  <script type="module" src="assets/js/game.js?v=63a61eb46a36"></script>
+  <script src="../../assets/js/site.js?v=4989c2d1e2af"></script>
+</body>
+</html>

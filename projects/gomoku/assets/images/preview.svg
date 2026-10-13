@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 390">
+<defs><linearGradient id="wood" x2="1" y2="1"><stop stop-color="#f4dfb6"/><stop offset="1" stop-color="#e8c892"/></linearGradient><radialGradient id="black" cx=".3" cy=".25"><stop stop-color="#59616a"/><stop offset="1" stop-color="#161e29"/></radialGradient><radialGradient id="white" cx=".3" cy=".25"><stop stop-color="#fff"/><stop offset="1" stop-color="#e4e7e9"/></radialGradient></defs>
+<rect width="600" height="390" rx="18" fill="url(#wood)"/>
+<path d="M40 45H560M40 95H560M40 145H560M40 195H560M40 245H560M40 295H560M40 345H560M50 35V355M100 35V355M150 35V355M200 35V355M250 35V355M300 35V355M350 35V355M400 35V355M450 35V355M500 35V355M550 35V355" stroke="#a48760" opacity=".7"/>
+<g fill="url(#black)" stroke="#19212c"><circle cx="200" cy="145" r="21"/><circle cx="250" cy="195" r="21"/><circle cx="300" cy="245" r="21"/><circle cx="350" cy="295" r="21"/></g>
+<g fill="url(#white)" stroke="#c6bfae"><circle cx="250" cy="145" r="21"/><circle cx="300" cy="195" r="21"/><circle cx="350" cy="245" r="21"/><circle cx="400" cy="245" r="21"/></g><circle cx="350" cy="295" r="5" fill="#eb9140"/>
+</svg>
