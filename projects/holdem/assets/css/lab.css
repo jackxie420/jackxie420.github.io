@@ -51,9 +51,8 @@
 .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 16px 0; }
 .calculation-controls { display: flex; align-items: end; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
 .calculation-controls > div { flex: 1; min-width: 150px; }
-.primary-button, .secondary-button { display: inline-flex; justify-content: center; align-items: center; min-height: 42px; border: 1px solid var(--blue-dark); border-radius: 8px; background: var(--blue-dark); color: #fff; padding: 10px 14px; font: 600 .8rem var(--sans); text-decoration: none; cursor: pointer; }
+.primary-button { display: inline-flex; justify-content: center; align-items: center; min-height: 42px; border: 1px solid var(--blue-dark); border-radius: 8px; background: var(--blue-dark); color: #fff; padding: 10px 14px; font: 600 .8rem var(--sans); text-decoration: none; cursor: pointer; }
 .primary-button:hover { background: #195c97; color: #fff; text-decoration: none; }
-.secondary-button { background: #fff; color: var(--blue-dark); }
 .equity-panel { border-top: 3px solid var(--blue); }
 .equity-number { display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
 #equity-value { font-size: 3.3rem; line-height: 1.15; font-weight: 700; letter-spacing: -.06em; color: var(--blue-dark); }
@@ -83,13 +82,8 @@
 .range-matrix { display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); gap: 2px; margin-top: 10px; }
 .range-matrix button { padding: 5px 0; border: 0; border-radius: 2px; font: 600 .6rem var(--sans); min-width: 0; min-height: 26px; color: #1d2939; cursor: pointer; }
 .range-matrix button[aria-pressed='true'] { outline: 2px solid #1d2939; outline-offset: -2px; }
-.solver-panel > p { font-size: .85rem; color: var(--muted); margin: 0 0 14px; }
-#solver-setup { margin: 16px 0; }
-#solver-setup textarea { margin-bottom: 12px; }
-#setup-text { font-size: .7rem; background: #f8fbfe; }
-.solver-link { width: 100%; margin-top: 8px; }
 .methodology { margin-top: 24px; }
-.method-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.method-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 .method-grid p { font-size: .77rem; color: var(--muted); line-height: 1.6; margin: 8px 0 0; }
 @media (max-width: 850px) { .lab-layout { grid-template-columns: minmax(0, 1fr); } .method-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; } }
 @media (max-width: 480px) {
@@ -108,7 +102,6 @@
 }
 [hidden] { display: none !important; }
 
-.secondary-button:disabled { opacity: .45; cursor: default; }
 @media (max-width: 480px) {
-  .street-tabs button, .lab-panel :is(select, input), .primary-button, .secondary-button { min-height: 44px; }
+  .street-tabs button, .lab-panel :is(select, input), .primary-button { min-height: 44px; }
 }

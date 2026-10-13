@@ -70,7 +70,7 @@ function render() {
   $('board-caption').textContent = counts[state.street] ? `${currentBoard().length} of ${counts[state.street]} selected` : 'No board before the flop';
   document.querySelectorAll('[data-street]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.street === state.street)));
   $('preflop-panel').hidden = state.street !== 'preflop';
-  renderPreflop(); updateSetup();
+  renderPreflop();
 }
 function spot() {
   if ($('opponent-mode').value === 'exact' && state.villain.some(c => c === null)) throw new Error('Choose both opponent cards.');
@@ -155,34 +155,6 @@ function renderPreflop() {
     }); matrix.appendChild(button);
   }
 }
-function buildSetup() {
-  if (state.street === 'preflop') throw new Error('Select a flop, turn, or river and complete its board to prepare a postflop solve.');
-  const hero = state.hero.filter(c => c !== null), board = currentBoard();
-  validateSpot({ hero, board, street: state.street });
-  const heroRange = $('hero-range').value.trim(), villainRange = $('solver-villain-range').value.trim();
-  const heroCombos = parseRange(heroRange, board), villainCombos = parseRange(villainRange, board);
-  if (!heroCombos.length || !villainCombos.length) throw new Error('Both solver ranges need at least one legal combo on this board.');
-  if (!heroCombos.some(h => hero.every(c => h.cards.includes(c)))) throw new Error('Your selected hand is outside your solver hero range. Add it to inspect its strategy.');
-  if (!heroCombos.some(h => villainCombos.some(v => h.cards.every(c => !v.cards.includes(c))))) throw new Error('The solver ranges have no compatible opponent/hero card combinations.');
-  const remaining = Number($('solver-stack').value);
-  if (!Number.isFinite(remaining) || remaining <= 0 || remaining > 1000000) throw new Error('Enter a positive effective remaining stack.');
-  const pot = numeric('pot'); if (pot <= 0) throw new Error('A postflop solve needs a positive pot.');
-  const ip = $('hero-position').value === 'ip';
-  return `WASM Postflop setup\nStreet: ${state.street}\nBoard: ${board.map(cardCode).join(' ')}\nStarting pot: ${pot} bb\nEffective remaining stack: ${remaining} bb\nOOP range: ${ip ? villainRange : heroRange}\nIP range: ${ip ? heroRange : villainRange}\nHero: ${ip ? 'IP' : 'OOP'}, ${hero.map(cardCode).join(' ')} (for inspecting results)\nSuggested starting bet tree: flop 33%, turn 50%, river 75%; configure raises and all-in thresholds in the solver.\nChoose an exploitability target and check convergence.\nThis is a fresh betting tree: prior actions and the equity calculator's bet-to-call are not imported.`;
-}
-function updateSetup() {
-  try { $('setup-text').value = buildSetup(); $('copy-setup').disabled = false; }
-  catch (e) { $('setup-text').value = e.message; $('copy-setup').disabled = true; }
-  $('copy-status').textContent = '';
-}
-$('copy-setup').addEventListener('click', async () => {
-  try {
-    const text = buildSetup();
-    try { await navigator.clipboard.writeText(text); }
-    catch { $('setup-text').focus(); $('setup-text').select(); if (!document.execCommand('copy')) throw new Error('Select the setup text and copy it manually.'); }
-    $('copy-status').textContent = 'Setup copied. Enter these settings in WASM Postflop, then build and solve your tree.';
-  } catch (e) { $('copy-status').textContent = e.message; }
-});
 $('clear-slot').addEventListener('click', () => { const [group, index] = state.active; state[group][index] = null; invalidate(); render(); });
 document.querySelectorAll('[data-street]').forEach(button => button.addEventListener('click', () => {
   state.street = button.dataset.street;
@@ -193,12 +165,11 @@ document.querySelectorAll('[data-street]').forEach(button => button.addEventList
 $('opponent-mode').addEventListener('change', () => {
   state.villain = [null, null]; state.active = $('opponent-mode').value === 'exact' ? ['villain', 0] : ['hero', 0]; invalidate(); render();
 });
-$('opponent-range').addEventListener('input', () => { invalidate(); updateSetup(); });
+$('opponent-range').addEventListener('input', () => { invalidate(); });
 $('calculate').addEventListener('click', calculate);
-for (const id of ['pot', 'bet']) $(id).addEventListener('input', () => { updateOdds(); updateSetup(); });
+for (const id of ['pot', 'bet']) $(id).addEventListener('input', () => { updateOdds(); });
 $('samples').addEventListener('change', invalidate);
 for (const id of ['stack', 'preflop-spot']) $(id).addEventListener('change', renderPreflop);
-for (const id of ['hero-range', 'solver-villain-range', 'solver-stack', 'hero-position']) $(id).addEventListener('input', updateSetup);
 const examples = {
   aces: { street: 'preflop', hero: ['As', 'Ah'], villain: ['Ks', 'Kh'], board: [], mode: 'exact' },
   draw: { street: 'flop', hero: ['Ah', 'Kh'], villain: [], board: ['Qh', 'Jh', '2c'], mode: 'random' },
@@ -212,4 +183,4 @@ document.querySelectorAll('[data-example]').forEach(button => button.addEventLis
   render(); calculate();
 }));
 render(); updateOdds(); calculate();
-fetch(new URL('../data/preflop.json?v=f9ac317f170f', import.meta.url)).then(response => { if (!response.ok) throw new Error('Data unavailable'); return response.json(); }).then(data => { blueprint = data; renderPreflop(); }).catch(() => { $('preflop-status').textContent = 'The preflop dataset could not load. Reload to retry; equity and the full solver launcher remain available.'; });
+fetch(new URL('../data/preflop.json?v=f9ac317f170f', import.meta.url)).then(response => { if (!response.ok) throw new Error('Data unavailable'); return response.json(); }).then(data => { blueprint = data; renderPreflop(); }).catch(() => { $('preflop-status').textContent = 'The preflop dataset could not load. Reload to retry; equity calculations remain available.'; });

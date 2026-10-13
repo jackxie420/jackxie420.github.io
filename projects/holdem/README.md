@@ -1,12 +1,12 @@
 # Hold’em Lab
 
-A static, browser-based heads-up Texas Hold’em study tool. Select two hole cards and a preflop/flop/turn/river board; calculate equity against random cards, a weighted range, or a known hand. For a full postflop strategy solve, the page launches the original WASM Postflop interface in a separate tab and provides a copyable setup. That interface requires manual entry of the board, ranges, pot, stack, and betting tree; this site does not import or display its results.
+A static, browser-based heads-up Texas Hold’em study tool. Select two hole cards and a preflop/flop/turn/river board; calculate equity against random cards, a weighted range, or a known hand.
 
 ## Files
 
 - `assets/js/poker.js`: card conversion, exact best-five evaluator, range expansion, equity enumeration/sampling, pot-odds formulas.
 - `assets/js/equity-worker.js`: equity calculation off the main thread; terminate to cancel.
-- `assets/js/lab.js`: card picker, inputs, published strategy viewer, and solver setup notes.
+- `assets/js/lab.js`: card picker, inputs, and published strategy viewer.
 - `assets/data/preflop.json`: a lossless projection of the sourced solver blueprint with provenance/configuration.
 - `assets/data/SOLVER-LICENSE.txt`: upstream MIT license.
 - `assets/css/` and `assets/images/`: local presentation assets.
@@ -33,15 +33,6 @@ Pot input means the amount **before** the opponent's bet. Calling adds a second 
 - Source shard hashes and convergence metadata are recorded in the bundled JSON.
 
 Regenerate with `python3 projects/holdem/scripts/import-preflop.py` from the repository root (requires network access). The script downloads only these pinned data files and the license.
-
-## Full postflop GTO integration
-
-WASM Postflop: https://wasm-postflop.pages.dev/
-Source: https://github.com/b-inary/wasm-postflop
-Engine: https://github.com/b-inary/postflop-solver
-Author: Wataru Inariba.
-
-The full solver is independently hosted and opened only when the visitor clicks its link. No AGPL solver code is copied or linked into this app. Copyable setup notes preserve the selected board and pot and explicit OOP/IP ranges; they intentionally use ranges instead of treating hero's exact private hand as public information. Prior betting actions are not inferred. Bet sizing and convergence must be configured in the external interface.
 
 ## Run and verify
 
