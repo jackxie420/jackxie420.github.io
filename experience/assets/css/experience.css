@@ -6,7 +6,8 @@ a.experience-card { display: grid; grid-template-columns: 156px minmax(0, 1fr); 
 .experience-media img { width: 100%; max-height: 110px; object-fit: contain; }
 .scai .experience-media { background: #f5f1fb; }
 .scai .experience-media img { max-height: 120px; }
-.clsp .experience-media { background: #fff; }
+.clsp .experience-media { background: #f0edfa; }
+.clsp .experience-media img { mix-blend-mode: multiply; }
 .supio .experience-media { background: #f0f1fa; }
 .athletics .experience-media { background: #e8f3fd; }
 .athletics .experience-media img { max-height: 112px; }
