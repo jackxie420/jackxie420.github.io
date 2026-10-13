@@ -1,14 +1,14 @@
 // Sweep a virtual cursor through the figure's existing hover handler.
-// Real interaction takes priority; explicit Pause stays paused.
-window.autoplayFigure = function ({ svg, container = svg?.parentElement, button, steps, idleMs = 4000 }) {
+// Hover pauses only over the graph and resumes immediately on leaving it.
+window.autoplayFigure = function ({ svg, container = svg?.parentElement, button, steps }) {
   if (!svg || !container || !steps?.length) return;
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  let playing = !motion.matches, visible = false, userActive = false;
-  let pointerInside = false, focusInside = false;
-  let idx = 0, elapsed = 0, lastTime = null, timer = null, idleTimer = null;
+  let playing = !motion.matches, visible = false;
+  let pointerInside = false;
+  let idx = 0, elapsed = 0, lastTime = null, timer = null;
   let needsSetup = true;
   const ease = k => k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
-  const running = () => playing && visible && !document.hidden && !userActive;
+  const running = () => playing && visible && !document.hidden && !pointerInside;
 
   function update() {
     if (button) {
@@ -51,56 +51,32 @@ window.autoplayFigure = function ({ svg, container = svg?.parentElement, button,
     timer = setTimeout(frame, 30);
   }
 
-  function resumeLater() {
-    clearTimeout(idleTimer);
-    if (pointerInside || focusInside) return;
-    idleTimer = setTimeout(() => {
-      userActive = false;
-      // Restore a known view after the visitor has changed the controls.
-      idx = 0; elapsed = 0; needsSetup = true;
-      update();
-    }, idleMs);
-  }
-  function interact() {
-    clearTimeout(idleTimer);
-    userActive = true;
+  // Only the SVG graph pauses hover playback; captions and controls do not.
+  function setPointerInside(inside) {
+    if (pointerInside === inside) return;
+    pointerInside = inside;
     update();
   }
-  container.addEventListener('pointerenter', e => {
-    if (!e.isTrusted || e.pointerType === 'touch') return;
-    pointerInside = true; interact();
-  });
-  container.addEventListener('pointermove', e => {
-    if (!e.isTrusted || e.pointerType === 'touch') return;
-    pointerInside = true; interact();
-  });
-  container.addEventListener('pointerleave', () => { pointerInside = false; resumeLater(); });
-  container.addEventListener('focusin', e => {
-    if (button?.contains(e.target)) return;
-    focusInside = true; interact();
-  });
-  container.addEventListener('focusout', e => {
-    focusInside = container.contains(e.relatedTarget) && !button?.contains(e.relatedTarget);
-    resumeLater();
-  });
-  ['pointerdown', 'click', 'input', 'change', 'keydown'].forEach(type => {
-    container.addEventListener(type, e => {
-      if (!e.isTrusted || button?.contains(e.target)) return;
-      interact(); resumeLater();
-    });
-  });
-  // Pointer events let touch visitors explore the same curves as mouse users.
-  svg.addEventListener('pointerdown', e => {
-    if (e.pointerType === 'touch') svg.onmousemove?.(e);
+  svg.addEventListener('pointerenter', e => {
+    if (e.isTrusted && e.pointerType !== 'touch') setPointerInside(true);
   });
   svg.addEventListener('pointermove', e => {
-    if (e.pointerType === 'touch') { interact(); svg.onmousemove?.(e); resumeLater(); }
+    if (!e.isTrusted) return;
+    if (e.pointerType !== 'touch') setPointerInside(true);
+    else if (e.buttons) svg.onmousemove?.(e);
   });
+  svg.addEventListener('pointerleave', () => setPointerInside(false));
+  svg.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'touch') {
+      setPointerInside(true);
+      svg.onmousemove?.(e);
+    }
+  });
+  ['pointerup', 'pointercancel'].forEach(type => svg.addEventListener(type, e => {
+    if (e.pointerType === 'touch') setPointerInside(false);
+  }));
   button?.addEventListener('click', () => {
     playing = !playing;
-    clearTimeout(idleTimer);
-    if (playing && userActive) { idx = 0; elapsed = 0; needsSetup = true; }
-    userActive = false;
     if (!playing) svg.onmouseleave?.();
     update();
   });
