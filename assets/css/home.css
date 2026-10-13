@@ -28,3 +28,22 @@
 .recent-panel .recent-updates li + li { border-top: 0; }
 .recent-panel .recent-updates a { padding: 9px 0; }
 @media (max-width: 480px) { .recent-panel { padding: 18px; } }
+
+/* Standardized, compact homepage research entries. */
+.list.eq.home-research { grid-auto-rows: 1fr; gap: 12px; }
+.list.eq.home-research > li, .list.eq.home-research > li > .rcard { height: 100%; }
+.home-research .rcard.with-thumb { grid-template-columns: minmax(0, 32%) minmax(0, 1fr); gap: 14px; padding: 0; overflow: hidden; align-items: stretch; }
+.home-research .rthumb { position: relative; min-height: 0; height: 100%; border-radius: 0; }
+.home-research .rthumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.home-research .rbody { display: flex; flex-direction: column; justify-content: center; padding: 14px 16px 14px 0; }
+.home-research .item-head h3 { font-size: .98rem; line-height: 1.4; }
+.home-research .date { font-size: .78rem; }
+.home-research .card-authors { font-size: .76rem; line-height: 1.5; margin: 5px 0 8px; }
+.publication-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; margin: 0; }
+.publication-meta .venue { color: var(--blue-dark); font-size: .8rem; }
+.publication-meta .badge { margin: 0; font-size: .68rem; }
+@media (max-width: 640px) {
+  .home-research .rcard.with-thumb { grid-template-columns: minmax(0, 28%) minmax(0, 1fr); gap: 12px; }
+  .home-research .rbody { padding: 12px 12px 12px 0; }
+  .home-research .item-head h3 { font-size: .9rem; }
+}
