@@ -795,3 +795,18 @@ a.org-logo:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -14px rg
 .card-authors { margin: 4px 0 7px; font-size: .8rem; line-height: 1.5; color: var(--muted); overflow-wrap: anywhere; }
 .card-authors strong { color: var(--text); font-weight: 700; }
 .links .cv-link { color: var(--blue-dark); font-weight: 700; }
+
+/* Compact homepage entries with a figure filling the left panel. */
+.home-research { gap: 12px; }
+@media (min-width: 641px) {
+  .home-research .rcard.with-thumb {
+    grid-template-columns: minmax(0, 40%) minmax(0, 1fr);
+    gap: 16px; padding: 0; overflow: hidden; align-items: stretch;
+  }
+  .home-research .rthumb { position: relative; min-height: 200px; border-radius: 0; }
+  .home-research .rthumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .home-research .rbody { padding: 14px 16px 14px 0; }
+  .home-research .item-head h3 { font-size: .98rem; }
+  .home-research .card-authors { font-size: .76rem; margin: 4px 0; }
+  .home-research .desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 5px 0 8px; }
+}
