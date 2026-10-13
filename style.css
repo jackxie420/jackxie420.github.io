@@ -731,3 +731,89 @@ a.org-logo:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -14px rg
 .rcard.with-thumb .publine .ptitle { overflow: visible; font-size: .84rem; line-height: 1.4; }
 .rcard.with-thumb .publine .venue::before { content: ""; }
 @media (max-width: 640px) { .rthumb { width: 100%; } }
+.tile-note { display: block; margin-top: 6px; font-size: .74rem; color: var(--muted); }
+.figure.narrow { max-width: 520px; }
+
+/* ---------- Tone paper: shared figure styles ---------- */
+.toc { display: flex; flex-wrap: wrap; gap: 6px; margin: -18px 0 34px; justify-content: center; }
+.toc a { font-size: .84rem; font-weight: 500; padding: 5px 12px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); color: var(--muted); }
+.toc a:hover { color: var(--blue-dark); border-color: #a9cff2; text-decoration: none; }
+.ex-tabs { margin: 4px 0 12px; }
+.fig-svg { display: block; width: 100%; min-width: 600px; height: auto; font-family: var(--sans); }
+.fig-svg.narrow-svg { min-width: 520px; max-width: 760px; }
+.fig-svg .f-title { font-size: 12px; font-weight: 600; fill: var(--muted); }
+.fig-svg .f-axis { font-size: 10.5px; fill: #7a8899; }
+.fig-svg .f-grid { stroke: #edf2f7; }
+.fig-svg .f-grid.mean { stroke: #c9d6e3; stroke-dasharray: 3 3; }
+.fig-svg .f-shade { fill: #f5f3ef; }
+.fig-svg .f-hz { font-size: 13px; fill: var(--text); }
+.fig-svg .f-py { font-size: 9.5px; fill: var(--muted); }
+.fig-svg .f-hz.hot, .fig-svg .f-py.hot, .fig-svg .f-token.hot { font-weight: 700; fill: #b4781a; }
+.fig-svg .f-token { font-size: 11.5px; fill: var(--text); }
+.fig-svg .f-voiced { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; transition: opacity .3s; }
+.fig-svg .f-voiced.faded { opacity: .3; }
+.fig-svg .f-adj { fill: none; stroke-width: 2; stroke-dasharray: 5 3; stroke-linejoin: round; }
+.fig-svg .f-interp { fill: none; stroke-width: 1; stroke-dasharray: 2 2.5; opacity: .6; }
+.fig-svg .f-link { fill: none; stroke: #b9c6d4; stroke-width: 1.5; transition: stroke .15s, stroke-width .15s; }
+.fig-svg .f-link.hot { stroke: #e0a020; stroke-width: 2.6; }
+.fig-svg .f-links.off { display: none; }
+.fig-svg .f-cross { stroke: #1d2939; stroke-width: 1; stroke-dasharray: 2 2; }
+.fig-svg .f-band { fill: transparent; }
+.fig-svg .f-band.hot { fill: rgba(42,120,214,.07); }
+.fig-svg .f-sep { stroke: #dfe6ee; stroke-dasharray: 2 2; }
+.fig-svg .f-reorder { fill: #fdeeee; }
+.fig-svg .f-note { font-size: 10.5px; fill: #b0503c; }
+.fig-svg .f-rho { font-size: 13px; font-weight: 700; fill: var(--text); }
+.fig-svg .tone-line { fill: none; stroke-width: 2.4; stroke-linecap: round; transition: opacity .2s; }
+.fig-svg .tone-line.dim, .fig-svg .tone-label.dim { opacity: .15; }
+.fig-svg .tone-label { font-size: 11.5px; font-weight: 600; }
+.fig-svg .trend-line { stroke-width: 1.4; stroke-dasharray: 5 4; fill: none; }
+.fig-svg .d-grid-l { stroke: #edf2f7; }
+.fig-svg .d-zero-l { stroke: #9aa8b8; stroke-width: 1.2; }
+.fig-svg .d-lab { font-size: 11.5px; font-weight: 600; }
+.legend .ln.adj { border-top: 2px dashed #9a3d12; }
+.legend .ln.ja { border-color: #d4588a; border-top-width: 2.5px; border-top-style: solid; }
+.tone-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tone-chip {
+  display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: #fff; cursor: pointer;
+  font: 500 .82rem var(--sans); color: var(--text); padding: 3px 10px; border-radius: 999px;
+}
+.tone-chip i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.tone-chip.on { border-color: var(--text); box-shadow: 0 0 0 1px var(--text) inset; }
+.mix-row { display: flex; align-items: center; gap: 10px; margin: 6px 0 8px; }
+.mix-row input { flex: 1; accent-color: var(--blue); }
+.mini-btn { border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 4px 10px; font: 600 .8rem var(--sans); color: var(--muted); cursor: pointer; }
+.mini-btn:hover { color: var(--blue-dark); border-color: #a9cff2; }
+.pick { display: inline-flex; align-items: center; gap: 6px; }
+.pick select { font: 500 .85rem var(--sans); padding: 5px 8px; border-radius: 8px; border: 1px solid var(--line); background: #fff; color: var(--text); }
+.sw-a, .sw-b { width: 14px; height: 4px; border-radius: 2px; display: inline-block; }
+.sw-a { background: #2a78d6; } .sw-b { background: #eb6834; }
+.kv.compact { margin-top: 16px; }
+.kv.compact div { grid-template-columns: 210px 1fr; padding: 8px 14px; font-size: .86rem; }
+@media (max-width: 640px) { .kv.compact div { grid-template-columns: 1fr; } }
+.followup { display: block; color: var(--text); }
+.followup:hover { text-decoration: none; border-color: #a9cff2; box-shadow: 0 8px 22px -14px rgba(47,134,212,.55); }
+.followup h3 { font-size: 1.02rem; margin: 4px 0 6px; }
+.followup .desc { margin: 0 0 8px; color: #344255; font-size: .93rem; }
+.followup .go { font-size: .88rem; font-weight: 600; color: var(--blue); }
+.fu-kicker { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+/* Highlighted header buttons (PDF, related paper) */
+.pp-links a.hl { background: linear-gradient(120deg, #2563eb, #0ea5e9); color: #fff; box-shadow: 0 8px 22px -10px rgba(37,99,235,.7); }
+.pp-links a.hl:hover { background: linear-gradient(120deg, #1d4ed8, #0284c7); }
+/* the first figure sits right under the title */
+.pp-hero { margin-bottom: 26px; }
+.pp-hero + section { margin-bottom: 36px; }
+
+/* Autoplay control */
+.play-btn {
+  display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: #fff; cursor: pointer;
+  font: 600 .8rem var(--sans); color: var(--blue-dark); padding: 5px 11px; border-radius: 999px;
+}
+.play-btn:hover { border-color: #a9cff2; }
+.play-btn span { font-size: .7rem; }
+.autoplaying .readout::before {
+  content: "Auto-playing · hover to explore"; display: inline-block; margin-right: 8px;
+  font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: #fff; background: var(--blue); padding: 2px 8px; border-radius: 999px; vertical-align: 1px;
+}

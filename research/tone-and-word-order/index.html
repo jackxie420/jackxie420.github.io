@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lexical Tone &amp; Word Order in Translation · Haopeng (Jack) Xie</title>
+  <meta name="description" content="Haopeng (Jack) Xie, CS student at Johns Hopkins University researching theory of mind, multi-agent LLMs, and speech.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234a9fe0'/><text x='50' y='66' font-size='46' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' fill='white'>JX</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav class="topnav">
+    <div class="inner">
+      <a class="brand" href="../../">Haopeng (Jack) Xie</a>
+      <ul>
+        <li><a href="../../">Home</a></li>
+        <li><a href="../../research/" class="active">Research &amp; Publications</a></li>
+        <li><a href="../../experience/">Experience</a></li>
+        <li><a href="../../projects/">Fun Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="pp">
+    <a class="crumb" href="../">← All research</a>
+
+    <header class="pp-hero">
+      <h1 class="pp-title">Lexical Tone and Word Order Matter in Translation<br><span>Prosodic Correspondence Across Languages</span></h1>
+      <p class="pp-authors">
+        <b>Haopeng Xie</b>,
+        Ismail Rasim Ulgen,
+        Shengying Zhao,
+        <a href="https://www.clsp.jhu.edu/faculty/berrak-sisman/" target="_blank" rel="noopener">Berrak Sisman</a>,
+        <a href="https://www.cs.jhu.edu/~phi/" target="_blank" rel="noopener">Philipp Koehn</a>
+      </p>
+      <p class="pp-affil">Center for Language and Speech Processing, Johns Hopkins University</p>
+      <div class="pp-venue"><span class="chip">Under review</span></div>
+      <div class="pp-links">
+        <span title="The paper is not public yet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Paper (coming soon)</span>
+        <a class="hl" href="../cross-lingual-prosody/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>Builds on: EMNLP 2026</a>
+      </div>
+    </header>
+
+    <section id="linking">
+      <h2>Linking contours across languages</h2>
+      <p>Pitch is extracted from both recordings, words are aligned by meaning, and each aligned cluster is compared at the same position. Explore the paper's Chinese–English example, or the German–English example from the EMNLP study.</p>
+      <div class="ex-tabs seg" id="ex-tabs"><button data-value="zh" aria-pressed="true">Chinese–English (this paper)</button><button data-value="de">German–English (EMNLP 2026)</button></div>
+
+      <div class="sentence" id="ex-zh">
+        <p class="pair-text"><span class="en">EN</span> I just feel like we've met before, I've seen you.</p>
+        <p class="pair-text"><span class="de">ZH</span> 我总觉得以前好像在哪里见过你。</p>
+        <div class="chart-head">
+          <div class="legend">
+            <span><i class="ln en"></i>English</span><span><i class="ln de"></i>Chinese</span><span><i class="ln adj"></i>Chinese, tone-adjusted</span><span><i class="ln dash"></i>interpolated</span>
+          </div>
+          <div class="controls">
+            <button type="button" class="play-btn" id="tf8-play"></button>
+            <label class="check"><input type="checkbox" id="tf8-adj"> Tone-adjusted</label>
+            <label id="tf8-links-wrap" class="check"><input type="checkbox" id="tf8-links" checked> Links</label>
+            <div class="seg" id="tf8-view"><button data-value="time" aria-pressed="true">① Over time</button><button data-value="pair">② Aligned clusters</button></div>
+          </div>
+        </div>
+        <div class="fig-scroll"><svg id="tf8" class="fig-svg" role="img" aria-label="Chinese and English pitch contours with alignment links"></svg></div>
+        <p class="readout" id="tf8-readout"></p>
+        <p class="fig-credit">Data extracted from Figure 8 of the paper.</p>
+      </div>
+
+      <div class="sentence" id="ex-de" hidden>
+        <p class="pair-text"><span class="de">DE</span> Ich habe immer gewusst, dass ich weiter das Mittelmeer erkunden muss.</p>
+        <p class="pair-text"><span class="en">EN</span> I always knew I had to return to explore the Mediterranean Sea.</p>
+        <div class="chart-head">
+          <div class="legend"><span><i class="ln de"></i>German (source)</span><span><i class="ln en"></i>English (dubbed)</span><span><i class="ln dash"></i>interpolated</span></div>
+          <div class="controls">
+            <label id="fig2-links-wrap" class="check"><input type="checkbox" id="fig2-links" checked> Links</label>
+            <div class="seg" id="fig2-view"><button data-value="time" aria-pressed="true">① Over time</button><button data-value="norm">② Aligned clusters</button></div>
+          </div>
+        </div>
+        <div class="fig-scroll"><svg id="fig2" role="img" aria-label="German and English pitch contours with word alignments"></svg></div>
+        <p class="readout" id="fig2-readout"></p>
+        <p class="fig-credit">Data extracted from Figure 2 of the <a href="../cross-lingual-prosody/">EMNLP 2026 paper</a>.</p>
+      </div>
+    </section>
+
+
+    <div class="stats">
+      <div class="stat"><b>5</b><span>Asian languages</span></div>
+      <div class="stat"><b>3</b><span>with lexical tone</span></div>
+      <div class="stat"><b>82K</b><span>scored utterance pairs</span></div>
+      <div class="stat"><b>137 h</b><span>of dubbed speech</span></div>
+    </div>
+
+    <nav class="toc" aria-label="On this page">
+      <a href="#linking">Linking contours</a><a href="#f1">Correspondence</a><a href="#f2">Lexical tone</a><a href="#f3">Word order</a><a href="#appendix">More results</a>
+    </nav>
+
+    <section>
+      <h2>Overview</h2>
+      <p class="lead">
+        Our <a href="../cross-lingual-prosody/">EMNLP 2026 study</a> found that pitch and energy partly carry across translation between English and three European languages.
+        This paper asks whether that holds when languages differ in <b>lexical tone</b> and <b>word order</b>.
+      </p>
+      <p>
+        We pair English with <b>Mandarin Chinese</b>, <b>Thai</b>, and <b>Vietnamese</b> (tonal), and with <b>Japanese</b> and <b>Korean</b> (very different word order),
+        and compare the tonal languages directly. Correspondence is lower than for European languages. Removing tone-related pitch narrows the gap but does not close it,
+        and greater word reordering goes with weaker local correspondence. The EMNLP results serve as the published European reference throughout this page.
+      </p>
+    </section>
+
+    <section>
+      <h2>Findings</h2>
+
+      <div class="finding" id="f1">
+        <div class="kicker">Finding 1</div>
+        <h3>Correspondence is lower than for European languages</h3>
+        <p>Every pair stays above its shuffled baseline, but all five English–Asian pairs fall below both the published European results and an English–French reference processed with the same pipeline.</p>
+        <div class="chart-head">
+          <div class="legend" id="tone-legend"></div>
+          <div class="controls"><div class="seg" id="tone-view"><button data-value="raw" aria-pressed="true">Pitch</button><button data-value="adj">Tone-adjusted pitch</button><button data-value="energy">Energy</button></div></div>
+        </div>
+        <div id="tone-chart"></div>
+
+        <h4 class="sub-h">Compare full distributions</h4>
+        <p>Pick any two language pairs, including the European pairs from the EMNLP study.</p>
+        <div class="chart-head">
+          <div class="controls">
+            <label class="pick"><span class="sw-a"></span><select id="tfd-a">
+              <option value="EMNLP DE–EN">DE–EN (EMNLP)</option><option value="EMNLP EN–ES">EN–ES (EMNLP)</option><option value="EMNLP EN–FR" selected>EN–FR (EMNLP)</option>
+              <option value="EN–FR (ref.)">EN–FR (reference)</option><option value="EN–ZH">EN–ZH</option><option value="EN–VI">EN–VI</option><option value="EN–TH">EN–TH</option><option value="EN–JA">EN–JA</option><option value="EN–KO">EN–KO</option>
+            </select></label>
+            <label class="pick"><span class="sw-b"></span><select id="tfd-b">
+              <option value="EMNLP DE–EN">DE–EN (EMNLP)</option><option value="EMNLP EN–ES">EN–ES (EMNLP)</option><option value="EMNLP EN–FR">EN–FR (EMNLP)</option>
+              <option value="EN–FR (ref.)">EN–FR (reference)</option><option value="EN–ZH">EN–ZH</option><option value="EN–VI">EN–VI</option><option value="EN–TH">EN–TH</option><option value="EN–JA" selected>EN–JA</option><option value="EN–KO">EN–KO</option>
+            </select></label>
+          </div>
+          <div class="seg" id="tfd-feat"><button data-value="pitch" aria-pressed="true">Pitch</button><button data-value="energy">Energy</button></div>
+        </div>
+        <div class="fig-scroll"><svg id="tfd" class="fig-svg" role="img" aria-label="Distributions of utterance-level correlations for two language pairs"></svg></div>
+        <p class="readout" id="tfd-readout"></p>
+        <p class="fig-credit">Data extracted from Figure 6 of this paper and Figure 3 of the EMNLP paper; bin shares reproduce each pair's reported mean.</p>
+      </div>
+
+      <div class="finding" id="f2">
+        <div class="kicker">Finding 2</div>
+        <h3>Lexical tone matters, but it is not the whole story</h3>
+        <p>A cross-fitted model estimates the pitch pattern each tone adds to a syllable and subtracts it. Drag the slider to remove the tone component and watch the tone-specific shapes collapse toward a shared contour.</p>
+        <div class="chart-head">
+          <div class="tone-chips" id="tf2-chips"></div>
+          <div class="seg" id="tf2-lang"><button data-value="Chinese" aria-pressed="true">Mandarin</button><button data-value="Thai">Thai</button><button data-value="Vietnamese">Vietnamese</button></div>
+        </div>
+        <div class="mix-row">
+          <button type="button" class="mini-btn" data-mix="0">Raw</button>
+          <input type="range" id="tf2-mix" min="0" max="100" value="0" aria-label="Share of tone component removed">
+          <button type="button" class="mini-btn" data-mix="100">Tone-adjusted</button>
+        </div>
+        <div class="fig-scroll"><svg id="tf2" class="fig-svg narrow-svg" role="img" aria-label="Tone-conditioned syllable pitch contours"></svg></div>
+        <p class="readout" id="tf2-readout"></p>
+        <p class="fig-credit">Data extracted from Figure 2 of the paper.</p>
+
+        <h4 class="sub-h">Does the adjustment really remove tone?</h4>
+        <p>A tone classifier gets worse at guessing the tone after adjustment, though it stays above chance. Real tone labels also beat shuffled labels, so the gains come from tone information.</p>
+        <div class="chart-head">
+          <div class="legend" id="pred-legend"></div>
+          <div class="seg" id="pred-view"><button data-value="acc" aria-pressed="true">Tone classifier accuracy</button><button data-value="label">Real vs. shuffled labels</button></div>
+        </div>
+        <div id="pred-chart"></div>
+      </div>
+
+      <div class="finding" id="f3">
+        <div class="kicker">Finding 3</div>
+        <h3>Word order shapes what we can measure</h3>
+        <p>Japanese and Korean reorder content the most and align the least. Keeping each recording's own order (temporal pairing) raises their correlations, but most of that gain disappears once the shared sentence-level pitch decline is removed.</p>
+        <div class="chart-head">
+          <div class="legend" id="order-legend"></div>
+          <div class="controls"><div class="seg" id="order-view"><button data-value="r" aria-pressed="true">Reordering</button><button data-value="strong">Strongly reordered</button><button data-value="adv">Temporal advantage</button><button data-value="cov">Coverage</button></div></div>
+        </div>
+        <div id="order-chart"></div>
+
+        <h4 class="sub-h">Detrending: a shared decline vs. word-level correspondence</h4>
+        <p>"Spring nights are short" in English and Japanese. Both recordings fall in pitch from start to end.</p>
+        <div class="chart-head">
+          <div class="legend"><span><i class="ln en"></i>English</span><span><i class="ln ja"></i>Japanese</span><span><i class="ln dash"></i>fitted trend</span></div>
+          <div class="seg"><button type="button" data-detrend="0" aria-pressed="true">Raw</button><button type="button" data-detrend="1">Remove trend</button></div>
+        </div>
+        <div class="fig-scroll"><svg id="tf3" class="fig-svg narrow-svg" role="img" aria-label="English and Japanese contours before and after detrending"></svg></div>
+        <p class="readout" id="tf3-readout"></p>
+        <p class="fig-credit">Data extracted from Figure 3 of the paper.</p>
+
+        <div class="chart-head">
+          <div class="legend" id="trend-legend"></div>
+          <div class="seg" id="trend-view"><button data-value="det" aria-pressed="true">Correlation after detrending</button><button data-value="decline">Sentence pitch decline</button></div>
+        </div>
+        <div id="trend-chart"></div>
+      </div>
+    </section>
+
+    <section id="appendix">
+      <h2>More results</h2>
+
+      <div class="finding">
+        <div class="kicker">Parts of speech</div>
+        <h3>Which words carry the shared pitch?</h3>
+        <p>Each bar is how much correspondence drops when a word class is removed. In the EMNLP study nouns mattered most for European pairs. Here, tone adjustment raises the noun contribution in all three tonal languages, close to or above French.</p>
+        <div class="chart-head">
+          <div class="legend" id="pos-legend"></div>
+          <div class="controls"><div class="seg" id="pos-pair"></div><div class="seg" id="pos-mode"></div></div>
+        </div>
+        <div id="pos-chart"></div>
+      </div>
+
+      <div class="finding">
+        <div class="kicker">Timing</div>
+        <h3>Timing still corresponds strongly</h3>
+        <p>Utterance duration and phoneme count stay highly correlated across languages, even where pitch contours correspond weakly. Mandarin is the lowest.</p>
+        <div class="chart-head">
+          <div class="legend"><span><i class="sw"></i>Duration ρ</span><span><i class="tick"></i>Phoneme-count ρ</span></div>
+        </div>
+        <div id="dur-chart"></div>
+      </div>
+
+      <div class="finding">
+        <div class="kicker">Robustness</div>
+        <h3>Stricter semantic filtering does not change the picture</h3>
+        <p>At the stricter SONAR threshold used in the EMNLP study (0.63 instead of 0.45), tonal-language correlations still stay below French.</p>
+        <div class="chart-head">
+          <div class="legend"><span><i class="sw"></i>Raw pitch ρ</span><span><i class="tick"></i>Tone-adjusted ρ</span></div>
+        </div>
+        <div id="sonar-chart"></div>
+        <dl class="kv compact">
+          <div><dt>Alignment benchmark, Chinese</dt><dd>Precision 80.5% · Recall 48.5% · AER 39.4%</dd></div>
+          <div><dt>Alignment benchmark, Japanese</dt><dd>Precision 71.0% · Recall 22.2% · AER 66.2%</dd></div>
+          <div><dt>Contour resolution</dt><dd>10–40 frames per cluster changes means by ≤ 0.002</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section>
+      <h2>Takeaway</h2>
+      <p class="lead">Lexical tone contributes to cross-lingual pitch differences but does not explain them alone. Local prosodic correspondence weakens between languages with very different sentence structure, even when broad sentence-level pitch patterns are shared. Expressive speech translation should model both.</p>
+    </section>
+
+  <script src="../../assets/charts.js"></script>
+  <script src="../../assets/prosody-figure.js"></script>
+  <script src="../../assets/prosody-dist.js"></script>
+  <script src="../../assets/tone-data.js"></script>
+  <script src="../../assets/tone-figs.js"></script>
+  <script src="../../assets/autoplay.js"></script>
+  <script>
+    (function () {
+      const svg = document.getElementById('tf8');
+      const view = v => document.querySelector(`#tf8-view button[data-value="${v}"]`).click();
+      const adj = on => { const c = document.getElementById('tf8-adj'); if (c.checked !== on) { c.checked = on; c.dispatchEvent(new Event('change')); } };
+      autoplayFigure({
+        svg, container: document.getElementById('ex-zh'), button: document.getElementById('tf8-play'),
+        steps: [
+          { setup: () => { adj(false); view('time'); }, sweep: () => [58, 742, 122], dur: 7000 }, // Chinese syllables + links
+          { sweep: () => [58, 742, 312], dur: 6000 },                                         // English words
+          { setup: () => adj(true), sweep: () => [58, 742, 122], dur: 6000 },                 // tone-adjusted Chinese
+          { setup: () => view('pair'), sweep: () => [58, 742, 149], dur: 6000 },               // aligned clusters, ρ 0.61
+          { setup: () => adj(false), sweep: () => [58, 742, 149], dur: 5000 },                 // raw, ρ 0.55
+        ],
+      });
+    })();
+  </script>
+  <script>
+    const f3 = v => v.toFixed(3);
+    const sgn = v => (v >= 0 ? '+' : '') + v.toFixed(3);
+    const legend = (id, items) => { document.getElementById(id).innerHTML = items.map(([c, t]) => `<span><i class="${c}"></i>${t}</span>`).join(''); };
+
+    // example tabs
+    segmented(document.getElementById('ex-tabs'), v => {
+      document.getElementById('ex-zh').hidden = v !== 'zh';
+      document.getElementById('ex-de').hidden = v !== 'de';
+    });
+
+    // ---- Table 4 (with the EMNLP published results)
+    const RAW = [
+      ['DE–EN (EMNLP)', .229, .223, .236, .007], ['EN–ES (EMNLP)', .241, .235, .247, .005], ['EN–FR (EMNLP)', .246, .239, .253, .010],
+      ['EN–FR (reference)', .221, .206, .236, .019],
+      ['EN–ZH', .129, .110, .148, .026], ['EN–VI', .113, .106, .119, .009], ['EN–TH', .151, .146, .155, .016],
+      ['EN–JA', .082, .075, .089, .020], ['EN–KO', .124, .115, .133, .026],
+      ['ZH–VI', .063, .023, .103, .001], ['ZH–TH', .149, .106, .190, .006], ['VI–TH', .088, .076, .100, .007],
+    ];
+    const ADJ = [
+      ['EN–ZH', .143, .123, .163, .129, .015], ['EN–VI', .140, .132, .147, .113, .027], ['EN–TH', .164, .160, .169, .151, .013],
+      ['ZH–VI', .096, .058, .130, .063, .033], ['ZH–TH', .149, .104, .193, .149, .000], ['VI–TH', .150, .137, .163, .088, .062],
+    ];
+    const ENERGY = [
+      ['DE–EN (EMNLP)', .183, .179, .187, .043], ['EN–ES (EMNLP)', .174, .170, .178, .030], ['EN–FR (EMNLP)', .176, .172, .179, .026],
+      ['EN–FR (reference)', .154, .146, .162, .038],
+      ['EN–ZH', .116, .103, .130, .045], ['EN–VI', .166, .162, .170, .102], ['EN–TH', .151, .148, .153, .085],
+      ['EN–JA', .090, .086, .094, .050], ['EN–KO', .078, .073, .083, .033],
+      ['ZH–VI', .130, .113, .151, .075], ['ZH–TH', .092, .072, .111, .052], ['VI–TH', .190, .182, .197, .136],
+    ];
+    function drawTone(view) {
+      const el = document.getElementById('tone-chart');
+      if (view === 'adj') {
+        legend('tone-legend', [['sw', 'Tone-adjusted ρ'], ['ci', '95% CI'], ['tick', 'Raw pitch ρ']]);
+        renderBars(el, ADJ.map(([p, m, lo, hi, raw, d]) => ({ label: p, value: m, lo, hi, base: raw,
+          tip: `<b>${p} · tone-adjusted</b><br>ρ = ${f3(m)} (95% CI ${f3(lo)}–${f3(hi)})<br>Raw ρ = ${f3(raw)} · change ${sgn(d)}` })),
+          { min: 0, max: 0.3, fmt: f3, columns: [['Pair', r => r.label], ['Adjusted ρ', r => f3(r.value)], ['Raw ρ', r => f3(r.base)]] });
+      } else {
+        const data = view === 'raw' ? RAW : ENERGY, name = view === 'raw' ? 'Pitch' : 'Energy';
+        legend('tone-legend', [['sw', 'Mean ρ'], ['ci', '95% CI'], ['tick', 'Shuffled baseline']]);
+        renderBars(el, data.map(([p, m, lo, hi, sh]) => ({ label: p, value: m, lo, hi, base: sh,
+          tip: `<b>${p} · ${name}</b><br>ρ = ${f3(m)} (95% CI ${f3(lo)}–${f3(hi)})<br>Shuffled baseline = ${f3(sh)}` })),
+          { min: 0, max: 0.3, fmt: f3, columns: [['Pair', r => r.label], ['Mean ρ', r => f3(r.value)], ['95% CI', r => `${f3(r.lo)}–${f3(r.hi)}`], ['Shuffled', r => f3(r.base)]] });
+      }
+    }
+    drawTone(segmented(document.getElementById('tone-view'), drawTone));
+
+    // ---- Tables 6–8: tone predictor and label baseline
+    function drawPred(view) {
+      const el = document.getElementById('pred-chart');
+      if (view === 'acc') {
+        legend('pred-legend', [['sw', 'Adjusted accuracy'], ['tick', 'Raw accuracy']]);
+        const A = [['Mandarin', .427, .301, .200], ['Vietnamese', .444, .287, .167], ['Thai', .464, .333, .200]];
+        renderBars(el, A.map(([l, raw, adj, ch]) => ({ label: l, value: adj, base: raw,
+          tip: `<b>${l}</b><br>Balanced accuracy: raw ${f3(raw)} → adjusted ${f3(adj)}<br>Chance ${f3(ch)} · above-chance accuracy cut by ${Math.round((1 - (adj - ch) / (raw - ch)) * 100)}%` })),
+          { min: 0, max: 0.5, fmt: f3, columns: [['Language', r => r.label], ['Raw', r => f3(r.base)], ['Adjusted', r => f3(r.value)]] });
+      } else {
+        legend('pred-legend', [['sw', 'Real-label minus shuffled-label ρ'], ['ci', '95% CI (English–tonal)']]);
+        const L = [['EN–ZH', .016, .005, .026], ['EN–VI', .027, .024, .030], ['EN–TH', .014, .012, .016], ['ZH–VI', .035], ['ZH–TH', .005], ['VI–TH', .063]];
+        renderBars(el, L.map(([p, v, lo, hi]) => ({ label: p, value: v, lo, hi,
+          tip: `<b>${p}</b><br>Δ label = ${sgn(v)}${lo != null ? ` (95% CI ${sgn(lo)} to ${sgn(hi)})` : ' (point estimate)'}` })),
+          { min: 0, max: 0.07, fmt: sgn, columns: [['Pair', r => r.label], ['Δ label', r => sgn(r.value)]] });
+      }
+    }
+    drawPred(segmented(document.getElementById('pred-view'), drawPred));
+
+    // ---- Tables 5, 9, 10 + Figure 4a: reordering
+    const PAIRS = ['EN–FR', 'EN–ZH', 'EN–VI', 'EN–TH', 'EN–JA', 'EN–KO'];
+    const R = [.045, .094, .063, .072, .241, .151], STRONG = [3, 13, 6, 7, 37, 23];
+    const ADV = [[.013, -.001, .025, .000], [.025, .001, .049, .007], [.015, .010, .021, .007], [.033, .029, .037, .018], [.090, .080, .101, .005], [.116, .103, .129, .023]];
+    const COV = [[72, 67], [62, 55], [66, 60], [66, 59], [52, 42], [46, 39]];
+    function drawOrder(view) {
+      const el = document.getElementById('order-chart');
+      if (view === 'r') {
+        legend('order-legend', [['sw', 'Mean reordering distance (0 = same order, 1 = reversed)']]);
+        renderBars(el, PAIRS.map((p, i) => ({ label: p, value: R[i], tip: `<b>${p}</b><br>Mean normalized Kendall distance = ${f3(R[i])}` })),
+          { min: 0, max: 0.3, fmt: f3, columns: [['Pair', r => r.label], ['Mean R', r => f3(r.value)]] });
+      } else if (view === 'strong') {
+        legend('order-legend', [['sw', 'Utterances with reordering distance R > 0.25 (%)']]);
+        renderBars(el, PAIRS.map((p, i) => ({ label: p, value: STRONG[i], tip: `<b>${p}</b><br>${STRONG[i]}% of utterances strongly reordered` })),
+          { min: 0, max: 40, fmt: v => v + '%', columns: [['Pair', r => r.label], ['R > 0.25', r => r.value + '%']] });
+      } else if (view === 'adv') {
+        legend('order-legend', [['sw', 'Temporal − semantic ρ'], ['ci', '95% CI'], ['tick', 'After detrending']]);
+        renderBars(el, PAIRS.map((p, i) => ({ label: p, value: ADV[i][0], lo: ADV[i][1], hi: ADV[i][2], base: ADV[i][3],
+          tip: `<b>${p}</b><br>Temporal advantage ${sgn(ADV[i][0])} (95% CI ${sgn(ADV[i][1])} to ${sgn(ADV[i][2])})<br>After detrending ${sgn(ADV[i][3])}` })),
+          { min: -0.02, max: 0.14, fmt: sgn, columns: [['Pair', r => r.label], ['Advantage', r => sgn(r.value)], ['After detrending', r => sgn(r.base)]] });
+      } else {
+        legend('order-legend', [['sw', 'English speech time aligned (%)'], ['tick', 'English words aligned (%)']]);
+        renderBars(el, PAIRS.map((p, i) => ({ label: p, value: COV[i][0], base: COV[i][1], tip: `<b>${p}</b><br>Speech-time coverage ${COV[i][0]}%<br>Word coverage ${COV[i][1]}%` })),
+          { min: 0, max: 100, fmt: v => v + '%', columns: [['Pair', r => r.label], ['Speech time', r => r.value + '%'], ['Words', r => r.base + '%']] });
+      }
+    }
+    drawOrder(segmented(document.getElementById('order-view'), drawOrder));
+
+    // ---- Tables 11 and 13: trends and detrending
+    const TR = [['EN–FR', -14.5, -11.8, .222, .123], ['EN–ZH', -12.3, -10.1, .136, .062], ['EN–VI', -14.1, -6.8, .115, .046], ['EN–TH', -13.8, -14.8, .153, .060], ['EN–JA', -12.7, -12.6, .084, .051], ['EN–KO', -12.1, -11.9, .131, .060]];
+    function drawTrend(view) {
+      const el = document.getElementById('trend-chart');
+      if (view === 'det') {
+        legend('trend-legend', [['sw', 'Semantic-pairing ρ after detrending'], ['tick', 'Before detrending']]);
+        renderBars(el, TR.map(([p, , , b, a]) => ({ label: p, value: a, base: b, tip: `<b>${p}</b><br>Before detrending ${f3(b)} → after ${f3(a)}` })),
+          { min: 0, max: 0.25, fmt: f3, columns: [['Pair', r => r.label], ['Before', r => f3(r.base)], ['After', r => f3(r.value)]] });
+      } else {
+        legend('trend-legend', [['sw neg', 'Target-language pitch change, first → last cluster (%)'], ['tick', 'English']]);
+        renderBars(el, TR.map(([p, en, other]) => ({ label: p, value: other, base: en, tip: `<b>${p}</b><br>Fitted first-to-last change: English ${en}% · ${p.slice(3)} ${other}% of mean F0` })),
+          { min: -16, max: 0, fmt: v => v.toFixed(1) + '%', columns: [['Pair', r => r.label], ['English', r => r.base + '%'], ['Target', r => r.value + '%']] });
+      }
+    }
+    drawTrend(segmented(document.getElementById('trend-view'), drawTrend));
+
+    // ---- POS: EMNLP Table 5 + this paper's Table 12
+    const CLASSES = ['Nouns', 'Verbs', 'Modifiers', 'Function words'];
+    const POS = {
+      'DE–EN (EMNLP)': { pitch: [.0228, .0034, .0083, -.0065], energy: [.0355, -.0041, .0027, -.0324] },
+      'EN–ES (EMNLP)': { pitch: [.0208, .0156, .0057, .0108], energy: [.0396, -.0064, .0062, -.0203] },
+      'EN–FR (EMNLP)': { pitch: [.0203, .0045, .0055, .0132], energy: [.0402, -.0128, .0052, -.0204] },
+      'EN–FR (ref.)': { raw: [.015, .009, .003, .020], sig: [1, 1, 0, 1] },
+      'EN–ZH': { raw: [.003, .031, .003, .016], adj: [.013, .027, .007, .007], sig: [0, 1, 0, 1], sigAdj: [1, 1, 0, 0] },
+      'EN–VI': { raw: [.010, .001, .004, .015], adj: [.017, .004, .008, .014], sig: [1, 0, 1, 1], sigAdj: [1, 1, 1, 1] },
+      'EN–TH': { raw: [.016, .010, .007, .013], adj: [.018, .012, .008, .011], sig: [1, 1, 1, 1], sigAdj: [1, 1, 1, 1] },
+    };
+    const posPairEl = document.getElementById('pos-pair'), posModeEl = document.getElementById('pos-mode');
+    posPairEl.innerHTML = Object.keys(POS).map((k, i) => `<button data-value="${k}"${i === 4 ? ' aria-pressed="true"' : ''}>${k.replace(' (EMNLP)', '*').replace(' (ref.)', '†')}</button>`).join('');
+    let posPair = 'EN–ZH', posMode = 'raw';
+    function modesFor(p) { return POS[p].pitch ? [['pitch', 'Pitch'], ['energy', 'Energy']] : POS[p].adj ? [['raw', 'Raw'], ['adj', 'Tone-adjusted']] : [['raw', 'Raw']]; }
+    function buildModes() {
+      const ms = modesFor(posPair); if (!ms.some(m => m[0] === posMode)) posMode = ms[0][0];
+      posModeEl.innerHTML = ms.map(([v, t]) => `<button data-value="${v}"${v === posMode ? ' aria-pressed="true"' : ''}>${t}</button>`).join('');
+      segmented(posModeEl, v => { posMode = v; drawPos(); });
+    }
+    function drawPos() {
+      const d = POS[posPair], vals = d[posMode], other = posMode === 'adj' ? d.raw : null;
+      const sig = posMode === 'adj' ? d.sigAdj : d.sig;
+      legend('pos-legend', [['sw', 'Helps correspondence'], ['sw neg', 'Hurts correspondence']].concat(other ? [['tick', 'Raw pitch']] : []).concat([['', posPair.includes('EMNLP') ? '* EMNLP 2026 · European pairs' : posPair.includes('ref') ? '† same-pipeline French reference' : 'this paper']]));
+      renderBars(document.getElementById('pos-chart'), CLASSES.map((c, i) => ({ label: c, value: vals[i], base: other ? other[i] : null,
+        tip: `<b>${posPair} · ${c}</b><br>Δρ = ${sgn(vals[i])}${other ? ` (raw ${sgn(other[i])})` : ''}${sig ? (sig[i] ? '<br>95% CI excludes zero' : '<br>95% CI includes zero') : ''}` })),
+        { min: -0.035, max: 0.045, fmt: sgn, columns: [['Word class', r => r.label], ['Δρ', r => sgn(r.value)]] });
+    }
+    segmented(posPairEl, v => { posPair = v; buildModes(); drawPos(); });
+    buildModes(); drawPos();
+
+    // ---- Duration / phoneme counts: EMNLP Table 6 + this paper's Table 14
+    const DUR = [['DE–EN (EMNLP)', .891, .885], ['EN–ES (EMNLP)', .890, .875], ['EN–FR (EMNLP)', .884, .871], ['EN–FR (reference)', .938, .905], ['EN–ZH', .758, .730], ['EN–VI', .916, .888], ['EN–TH', .847, .837]];
+    renderBars(document.getElementById('dur-chart'), DUR.map(([p, d, ph]) => ({ label: p, value: d, base: ph, tip: `<b>${p}</b><br>Duration ρ = ${f3(d)} · phoneme-count ρ = ${f3(ph)}` })),
+      { min: 0, max: 1, fmt: f3, columns: [['Pair', r => r.label], ['Duration ρ', r => f3(r.value)], ['Phoneme ρ', r => f3(r.base)]] });
+
+    // ---- Table 15: SONAR 0.63
+    const SON = [['EN–FR (reference)', .225, null], ['EN–ZH', .154, .163], ['EN–VI', .123, .153], ['EN–TH', .158, .174]];
+    renderBars(document.getElementById('sonar-chart'), SON.map(([p, r, a]) => ({ label: p, value: r, base: a, tip: `<b>${p} · SONAR ≥ 0.63</b><br>Raw ρ = ${f3(r)}${a != null ? ` · tone-adjusted ${f3(a)}` : ''}` })),
+      { min: 0, max: 0.3, fmt: f3, columns: [['Pair', r => r.label], ['Raw ρ', r => f3(r.value)], ['Adjusted ρ', r => r.base != null ? f3(r.base) : '—']] });
+  </script>
+
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> Haopeng (Jack) Xie</span>
+    <span>Last updated October 2026</span>
+  </footer>
+
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

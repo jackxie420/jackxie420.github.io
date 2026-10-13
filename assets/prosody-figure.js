@@ -107,7 +107,7 @@ window.FIG2 = {"DE":{"interp":[[[0.0,128.2],[0.04,128.2],[0.05,125.2],[0.07,125.
       const key = m.y < (panels.de.top + panels.de.h + panels.en.top) / 2 ? 'de' : 'en';
       const p = panels[key], t = ((m.x - L) / (W - L - R)) * T;
       const hz = valueAt(p.data.interp, t);
-      if (m.x < L || hz == null) { cross.setAttribute('visibility', 'hidden'); dot.setAttribute('visibility', 'hidden'); return; }
+      if (m.x < L || hz == null) return svg.onmouseleave();
       cross.setAttribute('x1', m.x); cross.setAttribute('x2', m.x);
       cross.setAttribute('y1', p.top); cross.setAttribute('y2', p.top + p.h);
       cross.setAttribute('visibility', 'visible');
