@@ -43,3 +43,7 @@ python3 -m http.server 8765
 ```
 
 Open `http://localhost:8765`. Stop the preview with Ctrl+C when finished. Use an HTTP server for Hangman, which imports an ES module.
+
+## Research dates and ordering
+
+Homepage and research listings use `<time class="date" datetime="YYYY-MM">Mon YYYY</time>` for each project. Lists marked `data-sort="newest"` are automatically ordered by that date in the shared site script. Entries in the same month retain their HTML order; keep the preferred tie order in both listings. The HTML itself should also remain newest first for visitors without JavaScript.

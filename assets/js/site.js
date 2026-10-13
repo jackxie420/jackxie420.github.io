@@ -1,3 +1,10 @@
+// Order dated project listings newest first; preserve their order for month ties.
+document.querySelectorAll('[data-sort="newest"]').forEach(list => {
+  const entries = [...list.children];
+  entries.sort((a, b) => (b.querySelector('time[datetime]')?.dateTime || '').localeCompare(a.querySelector('time[datetime]')?.dateTime || ''));
+  entries.forEach(entry => list.appendChild(entry));
+});
+
 // Footer year + scroll-reveal for elements marked .reveal
 document.getElementById('year').textContent = new Date().getFullYear();
 (function () {

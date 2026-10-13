@@ -21,3 +21,10 @@
 @media (max-width: 480px) {
   .recent-updates a { grid-template-columns: minmax(0, 1fr); gap: 3px; }
 }
+
+/* Recently is an enclosed panel, like a compact news box. */
+.recent-panel { background: #edf3f8; border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; }
+.recent-panel h2 { color: var(--text); font-size: 1.15rem; font-weight: 700; text-transform: none; letter-spacing: 0; border: 0; padding: 0; margin-bottom: 12px; }
+.recent-panel .recent-updates li + li { border-top: 0; }
+.recent-panel .recent-updates a { padding: 9px 0; }
+@media (max-width: 480px) { .recent-panel { padding: 18px; } }

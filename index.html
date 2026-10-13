@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css?v=5fcada8d8a73">
-  <link rel="stylesheet" href="assets/css/home.css?v=a371717ae9ba">
+  <link rel="stylesheet" href="assets/css/home.css?v=3491e9f67d8a">
 </head>
 <body>
   <nav class="topnav">
@@ -62,7 +62,7 @@
         </div>
       </section>
 
-      <section aria-labelledby="recently-heading">
+      <section class="recent-panel" aria-labelledby="recently-heading">
         <h2 class="reveal" id="recently-heading">Recently</h2>
         <ul class="recent-updates">
           <li class="reveal"><a href="research/cross-lingual-prosody/">
@@ -70,7 +70,7 @@
             <span>Presenting my work at <strong>EMNLP 2026 in Budapest</strong>. <span class="recent-more">View paper →</span></span>
           </a></li>
           <li class="reveal"><a href="research/tone-and-word-order/">
-            <span class="recent-label">New work</span>
+            <time datetime="2026-10">Oct 2026</time>
             <span><strong>Lexical Tone and Word Order Matter in Translation</strong>: new work on prosody across tonal languages is available. <span class="recent-more">View project →</span></span>
           </a></li>
         </ul>
@@ -78,11 +78,11 @@
 
       <section>
         <h2 class="reveal">Research &amp; Publications <a href="research/">View all →</a></h2>
-    <ul class="list eq home-research">
+    <ul class="list eq home-research" data-sort="newest">
       <li class="reveal"><a class="item rcard with-thumb" href="research/tone-and-word-order/">
         <span class="rthumb"><img src="research/tone-and-word-order/assets/images/figure-8.jpg" alt="Figure from the paper: Chinese and English pitch contours with syllable tone labels and aligned clusters" loading="lazy"></span>
         <div class="rbody">
-        <div class="item-head"><h3>Lexical Tone & Word Order in Translation</h3><span class="date">2026</span></div>
+        <div class="item-head"><h3>Lexical Tone & Word Order in Translation</h3><time class="date" datetime="2026-10">Oct 2026</time></div>
         <p class="card-authors"><strong>Haopeng Xie</strong>, Ismail Rasim Ulgen, Shengying Zhao, Berrak Sisman, Philipp Koehn</p>
         <p class="sub">Center for Language and Speech Processing, JHU</p>
         <p class="desc">Does prosody still carry across translation when languages differ in lexical tone and word order? English paired with Mandarin, Thai, Vietnamese, Japanese, and Korean.</p>
@@ -92,7 +92,7 @@
       <li class="reveal"><a class="item rcard with-thumb" href="research/cross-lingual-prosody/">
         <span class="rthumb"><img src="research/cross-lingual-prosody/assets/images/figure-2.jpg" alt="Figure 2 from the paper: German and English pitch contours, word alignment, and the reordered comparison (rho 0.79)" loading="lazy"></span>
         <div class="rbody">
-        <div class="item-head"><h3>Cross-Lingual Prosody in Dubbed Speech</h3><span class="date">2026</span></div>
+        <div class="item-head"><h3>Cross-Lingual Prosody in Dubbed Speech</h3><time class="date" datetime="2026-10">Oct 2026</time></div>
         <p class="card-authors"><strong>Haopeng Xie</strong>, Ismail Rasim Ulgen, Sofia Son, Berrak Sisman, Philipp Koehn</p>
         <p class="sub">Center for Language and Speech Processing, JHU</p>
         <p class="desc">Does the way something is said survive translation? A large-scale study of word-level prosody across 300K dubbed utterance pairs.</p>
@@ -102,7 +102,7 @@
       <li class="reveal"><a class="item rcard with-thumb" href="research/thoughttrace/">
         <span class="rthumb"><img src="research/thoughttrace/assets/images/example.jpg" alt="Figure from the ThoughtTrace project page: a conversation paired with the user's annotated reasons and reactions" loading="lazy"></span>
         <div class="rbody">
-        <div class="item-head"><h3>ThoughtTrace</h3><span class="date">2026</span></div>
+        <div class="item-head"><h3>ThoughtTrace</h3><time class="date" datetime="2026-05">May 2026</time></div>
         <p class="card-authors">Chuanyang Jin, Binze Li, <strong>Haopeng Xie</strong>, Cathy Mengying Fang, Tianjian Li, Shayne Longpre, Hongxiang Gu, Maximillian Chen, Tianmin Shu</p>
         <p class="sub">Social Cognitive AI Lab, JHU</p>
         <p class="desc">What are users thinking but not typing? A dataset of user thoughts in real-world LLM interactions, and a test of whether models can recover them.</p>
@@ -196,6 +196,6 @@
     <span>Last updated October 2026</span>
   </footer>
 
-  <script src="assets/js/site.js?v=dedbe7ba6dbd"></script>
+  <script src="assets/js/site.js?v=4989c2d1e2af"></script>
 </body>
 </html>
