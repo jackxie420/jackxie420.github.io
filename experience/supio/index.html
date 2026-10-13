@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Software Engineer Intern, Supio · Haopeng (Jack) Xie</title>
+  <meta name="description" content="Haopeng (Jack) Xie, CS student at Johns Hopkins University researching theory of mind, multi-agent LLMs, and speech.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234a9fe0'/><text x='50' y='66' font-size='46' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' fill='white'>JX</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav class="topnav">
+    <div class="inner">
+      <a class="brand" href="../../">Haopeng (Jack) Xie</a>
+      <ul>
+        <li><a href="../../">Home</a></li>
+        <li><a href="../../research/">Research &amp; Publications</a></li>
+        <li><a href="../../experience/" class="active">Experience</a></li>
+        <li><a href="../../projects/">Fun Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="pp">
+    <a class="crumb" href="../">← All experience</a>
+
+    <header class="org-card accent-supio">
+      <a class="org-logo" href="https://www.supio.com" target="_blank" rel="noopener" title="Supio website">
+        <img src="../../assets/img/logos/supio.png" alt="Supio logo">
+      </a>
+      <div class="org-main">
+        <p class="org-kicker">Industry · Internship</p>
+        <h1 class="org-title">Software Engineer Intern</h1>
+        <p class="org-name">Supio · Legal AI</p>
+        <dl class="org-facts">
+          <div><dt>Dates</dt><dd>Jun – Aug 2025</dd></div>
+          <div><dt>Focus</dt><dd>Machine learning</dd></div>
+          <div><dt>Company</dt><dd><a href="https://www.supio.com" target="_blank" rel="noopener">supio.com <svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <section>
+      <h2>Overview</h2>
+      <p class="lead">Supio builds an AI platform for plaintiff law firms handling personal injury and mass tort cases. It organizes thousands of pages of medical records and case files into chronologies and key facts, and helps attorneys draft documents such as demand letters.</p>
+      <div class="tags"><span>Legal AI</span><span>NLP</span><span>ML Infrastructure</span><span>Text Classification</span></div>
+    </section>
+
+    <section>
+      <h2>What I worked on</h2>
+
+      <div class="contrib">
+        <div class="contrib-num">01</div>
+        <div>
+          <h3>Intent classifier for lawsuit files</h3>
+          <p>Trained an intent classifier that recognizes what an incoming lawsuit file is for, so it can be processed automatically instead of being sorted by hand.</p>
+          <div class="flow" role="list">
+            <button class="flow-node" data-flow="0" role="listitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>
+              <b>Lawsuit files</b><small>Incoming documents</small>
+            </button>
+            <span class="flow-arrow" aria-hidden="true">→</span>
+            <button class="flow-node mine" data-flow="1" role="listitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg>
+              <b>Intent classifier</b><small>My model</small>
+            </button>
+            <span class="flow-arrow" aria-hidden="true">→</span>
+            <button class="flow-node" data-flow="2" role="listitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M4 12h16M4 17h7"/><path d="m16 5 3 2-3 2M14 15l3 2-3 2"/></svg>
+              <b>Automated processing</b><small>Routed to the right workflow</small>
+            </button>
+          </div>
+          <p class="flow-detail" id="flow-detail">Simplified view. Select a step to see what happens there.</p>
+        </div>
+      </div>
+
+      <div class="contrib">
+        <div class="contrib-num">02</div>
+        <div>
+          <h3>Machine learning platform</h3>
+          <p>Developed an internal machine learning platform supporting the company's model development, including the infrastructure behind models like the intent classifier.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>About the company</h2>
+      <dl class="kv">
+        <div><dt>Customers</dt><dd>Plaintiff law firms (personal injury &amp; mass tort)</dd></div>
+        <div><dt>Product</dt><dd>Medical chronologies, case insights, and document drafting</dd></div>
+        <div><dt>Funding</dt><dd>$25M, led by Sapphire Ventures (2024)</dd></div>
+        <div><dt>Partnership</dt><dd>Thomson Reuters (announced 2025)</dd></div>
+      </dl>
+    </section>
+
+  <script>
+    (function () {
+      const text = [
+        '<b>Lawsuit files.</b> Firms receive a steady stream of case documents that each need to go to the right place.',
+        '<b>Intent classifier.</b> The model I trained reads a file and predicts its intent, which decides how it should be handled.',
+        '<b>Automated processing.</b> With the intent known, the file is routed into the matching automated workflow, cutting manual triage.',
+      ];
+      const nodes = document.querySelectorAll('.flow-node');
+      const detail = document.getElementById('flow-detail');
+      nodes.forEach(n => n.addEventListener('click', () => {
+        nodes.forEach(m => m.classList.toggle('on', m === n));
+        detail.innerHTML = text[+n.dataset.flow];
+      }));
+    })();
+  </script>
+
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> Haopeng (Jack) Xie</span>
+    <span>Last updated October 2026</span>
+  </footer>
+
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

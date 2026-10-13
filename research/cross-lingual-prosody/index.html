@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cross-Lingual Prosody in Dubbed Speech · Haopeng (Jack) Xie</title>
+  <meta name="description" content="Haopeng (Jack) Xie, CS student at Johns Hopkins University researching theory of mind, multi-agent LLMs, and speech.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234a9fe0'/><text x='50' y='66' font-size='46' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' fill='white'>JX</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav class="topnav">
+    <div class="inner">
+      <a class="brand" href="../../">Haopeng (Jack) Xie</a>
+      <ul>
+        <li><a href="../../">Home</a></li>
+        <li><a href="../../research/" class="active">Research &amp; Publications</a></li>
+        <li><a href="../../experience/">Experience</a></li>
+        <li><a href="../../projects/">Fun Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="pp">
+    <a class="crumb" href="../">← All research</a>
+
+    <header class="pp-hero">
+      <h1 class="pp-title">Is Prosody Lost in Translation?<br><span>Fine-Grained Cross-Lingual Prosody Similarity Across Languages</span></h1>
+      <p class="pp-authors">
+        <b>Haopeng Xie</b>,
+        Ismail Rasim Ulgen,
+        Sofia Son,
+        <a href="https://www.clsp.jhu.edu/faculty/berrak-sisman/" target="_blank" rel="noopener">Berrak Sisman</a>,
+        <a href="https://www.cs.jhu.edu/~phi/" target="_blank" rel="noopener">Philipp Koehn</a>
+      </p>
+      <p class="pp-affil">Center for Language and Speech Processing, Johns Hopkins University</p>
+      <div class="pp-venue"><span class="chip">Findings of EMNLP 2026</span></div>
+      <p class="pp-announce">🇭🇺 I'll be presenting this work at <b>EMNLP 2026 in Budapest</b>. Hope to meet everyone there!</p>
+      <div class="pp-links">
+        <a href="https://arxiv.org/abs/2608.27848" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>arXiv</a>
+        <a href="https://arxiv.org/pdf/2608.27848" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>PDF</a>
+        <a href="https://arxiv.org/html/2608.27848" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>HTML</a>
+        <a href="#cite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5H3v8h4M14 21c3 0 7-1 7-8V5h-7v8h4"/></svg>BibTeX</a>
+        <span title="The paper states the analysis pipeline will be released"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>Code (coming soon)</span>
+      </div>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><b>3</b><span>language pairs</span></div>
+      <div class="stat"><b>300K</b><span>mined utterance pairs</span></div>
+      <div class="stat"><b>49K</b><span>pairs after filtering</span></div>
+      <div class="stat"><b>110 h</b><span>of dubbed speech</span></div>
+      <div class="stat"><b>p&lt;10<sup>−80</sup></b><span>vs. shuffled baseline</span></div>
+    </div>
+
+    <section>
+      <h2>Overview</h2>
+      <p class="lead">
+        Prosody (pitch, loudness, and timing) carries emphasis, emotion, and intent beyond the words themselves.
+        Expressive speech-to-speech translation systems try to carry it across languages, but little is known about
+        how prosody actually corresponds between languages.
+      </p>
+      <p>
+        We present the first fine-grained, word-level analysis of cross-lingual prosody, using professionally dubbed
+        TV speech in <b>English–German</b>, <b>English–Spanish</b>, and <b>English–French</b>. Dubbing actors aim to preserve
+        the expressiveness of the original, which makes dubbing a natural parallel corpus for prosody.
+      </p>
+    </section>
+
+    <section>
+      <h2>One sentence, two languages</h2>
+      <p>The paper's running example, from a German show dubbed into English. Explore the real pitch contours from the paper, then see how alignment lines up the words before measuring correlation.</p>
+      <div class="sentence">
+        <p class="pair-text"><span class="de">DE</span> Ich habe immer gewusst, dass ich weiter das Mittelmeer erkunden muss.</p>
+        <p class="pair-text"><span class="en">EN</span> I always knew I had to return to explore the Mediterranean Sea.</p>
+        <div class="chart-head">
+          <div class="legend">
+            <span><i class="ln de"></i>German (source)</span>
+            <span><i class="ln en"></i>English (dubbed)</span>
+            <span><i class="ln dash"></i>interpolated (unvoiced)</span>
+          </div>
+          <div class="controls">
+            <label id="fig2-links-wrap" class="check"><input type="checkbox" id="fig2-links" checked> Alignment lines</label>
+            <div class="seg" id="fig2-view"><button data-value="time" aria-pressed="true">① Pitch over time</button><button data-value="norm">② Aligned &amp; reordered</button></div>
+          </div>
+        </div>
+        <div class="fig-scroll"><svg id="fig2" role="img" aria-label="Pitch contours of a German sentence and its English dub, with word alignments"></svg></div>
+        <p class="readout" id="fig2-readout"></p>
+        <p class="fig-credit">Data extracted from Figure 2 of the paper.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step-tabs" role="tablist">
+          <button data-step="1" role="tab"><i>1</i>Mine &amp; filter</button>
+          <button data-step="2" role="tab"><i>2</i>Transcribe &amp; align</button>
+          <button data-step="3" role="tab"><i>3</i>Extract prosody</button>
+          <button data-step="4" role="tab"><i>4</i>Reorder &amp; normalize</button>
+          <button data-step="5" role="tab"><i>5</i>Correlate</button>
+        </div>
+        <div class="step-panel" data-step="1">
+          <h4>Mine parallel speech and keep only clean pairs</h4>
+          <p>Source and dubbed clips are mined with SpeechVecAlign, then filtered for audio quality, single speakers, and semantic match. About 1 in 6 pairs survives (see the funnel below).</p>
+          <div class="tools"><span>SpeechVecAlign</span><span>SQUIM (SI-SDR, STOI, PESQ)</span><span>pyannote</span><span>SONAR</span></div>
+        </div>
+        <div class="step-panel" data-step="2" hidden>
+          <h4>Word timings and cross-lingual word alignment</h4>
+          <p>whisper-timestamped gives word-level timestamps. FastAlign, run in both directions and augmented with OPUS TED2013, links each word to its translation, reaching 82.2% precision on a gold German–English benchmark.</p>
+          <div class="tools"><span>whisper-timestamped</span><span>FastAlign</span><span>OPUS TED2013</span></div>
+        </div>
+        <div class="step-panel" data-step="3" hidden>
+          <h4>Frame-level pitch and energy</h4>
+          <p>Pitch (F0) is extracted with pYAAPT and interpolated through unvoiced regions; energy is extracted with librosa. Clips where the pitch tracker fails are excluded.</p>
+          <div class="tools"><span>pYAAPT</span><span>librosa</span></div>
+        </div>
+        <div class="step-panel" data-step="4" hidden>
+          <h4>Compare words with their translations, not their positions</h4>
+          <p>Word-level segments are grouped into alignment clusters and reordered so translated words line up, even when word order differs. Each word is resampled to 20 frames, and each contour is normalized by the speaker's mean.</p>
+          <div class="tools"><span>alignment clusters</span><span>20 frames / word</span><span>mean normalization</span></div>
+        </div>
+        <div class="step-panel" data-step="5" hidden>
+          <h4>Measure correspondence against a random baseline</h4>
+          <p>Each pair is scored with Spearman rank correlation and compared with a baseline that shuffles the target contour. Leave-one-out ablations by part of speech show which words carry the shared prosody.</p>
+          <div class="tools"><span>Spearman ρ</span><span>shuffled baseline</span><span>POS ablation</span><span>bootstrap CIs</span></div>
+        </div>
+      </div>
+
+      <div class="finding" style="margin-top:16px">
+        <div class="kicker">Data</div>
+        <h3>From 100K mined pairs per language to about 16K clean ones</h3>
+        <div class="chart-head">
+          <div class="legend"><span><i class="sw"></i>Utterance pairs remaining</span></div>
+          <div class="controls"><div class="seg" id="funnel-pair"><button data-value="DE–EN" aria-pressed="true">DE–EN</button><button data-value="EN–ES">EN–ES</button><button data-value="EN–FR">EN–FR</button></div></div>
+        </div>
+        <div id="funnel-chart"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Findings</h2>
+
+      <div class="finding">
+        <div class="kicker">Finding 1</div>
+        <h3>Prosody partly survives translation</h3>
+        <p>Source and dubbed contours are positively correlated in every language pair, far above the shuffled baseline. Pitch corresponds more strongly than energy.</p>
+        <div class="chart-head">
+          <div class="legend"><span><i class="sw"></i>Mean Spearman ρ</span><span><i class="ci"></i>95% CI</span><span><i class="tick"></i>Shuffled baseline</span></div>
+          <div class="controls"><div class="seg" id="corr-feature"><button data-value="pitch" aria-pressed="true">Pitch</button><button data-value="energy">Energy</button></div></div>
+        </div>
+        <div id="corr-chart"></div>
+
+        <h4 class="sub-h">How the correlations are distributed</h4>
+        <p>Each utterance pair gets its own correlation. The whole distribution shifts right of zero, so the effect isn't driven by a few outliers. Drag the threshold to see what share of pairs clear it.</p>
+        <div class="chart-head">
+          <div class="controls">
+            <div class="seg" id="dist-feature"><button data-value="pitch" aria-pressed="true">Pitch</button><button data-value="energy">Energy</button></div>
+            <div class="seg" id="dist-pair"><button data-value="DE–EN" aria-pressed="true">DE–EN</button><button data-value="EN–ES">EN–ES</button><button data-value="EN–FR">EN–FR</button><button data-value="all">All</button></div>
+          </div>
+          <label class="thr">Threshold ρ ≥ <b id="dist-thr-val">0.50</b><input type="range" id="dist-thr" min="-1" max="1" step="0.0333333" value="0.5"></label>
+        </div>
+        <div class="legend dist-legend"><span><i class="sw"></i>Utterance pairs per bin</span><span><i class="ln mean"></i>Mean</span><span><i class="tick"></i>Shuffled-baseline mean</span><span><i class="ln zero"></i>ρ = 0</span></div>
+        <div class="fig-scroll"><svg id="dist" role="img" aria-label="Histogram of utterance-level Spearman correlations"></svg></div>
+        <p class="readout" id="dist-readout"></p>
+        <details class="data-table"><summary>Show data table</summary><div class="table-wrap"><table id="dist-table"></table></div></details>
+        <p class="fig-credit">Data extracted from Figure 3 of the paper; bin counts sum to each language pair's n.</p>
+      </div>
+
+      <div class="finding">
+        <div class="kicker">Finding 2</div>
+        <h3>Nouns carry the shared prosody</h3>
+        <p>Removing a word class from the contour shows how much it contributes. Nouns help most in every language pair. Function words make energy correspondence <em>worse</em>.</p>
+        <div class="chart-head">
+          <div class="legend"><span><i class="sw"></i>Helps correspondence</span><span><i class="sw neg"></i>Hurts correspondence</span></div>
+          <div class="controls">
+            <div class="seg" id="pos-feature"><button data-value="pitch">Pitch</button><button data-value="energy" aria-pressed="true">Energy</button></div>
+            <div class="seg" id="pos-pair"><button data-value="0" aria-pressed="true">DE–EN</button><button data-value="1">EN–ES</button><button data-value="2">EN–FR</button></div>
+          </div>
+        </div>
+        <div id="pos-chart"></div>
+      </div>
+
+      <div class="finding">
+        <div class="kicker">Finding 3</div>
+        <h3>Timing is almost fully preserved</h3>
+        <p>At the utterance level, duration and phoneme count are strongly correlated across languages (ρ ≈ 0.87–0.89). Dubbing actors rarely need to change their speaking rate much to fit the timing.</p>
+        <div class="tiles">
+          <div class="tile"><div class="pair">DE–EN</div><div class="nums"><span><b>0.891</b>duration</span><span><b>0.885</b>phonemes</span></div></div>
+          <div class="tile"><div class="pair">EN–ES</div><div class="nums"><span><b>0.890</b>duration</span><span><b>0.875</b>phonemes</span></div></div>
+          <div class="tile"><div class="pair">EN–FR</div><div class="nums"><span><b>0.884</b>duration</span><span><b>0.871</b>phonemes</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>My role</h2>
+      <ul>
+        <li>First author. Led the project's implementation and analysis.</li>
+        <li>Built the end-to-end pipeline: speech-quality filtering, bilingual word alignment, prosody extraction, statistical validation, and linguistic analysis.</li>
+        <li>Refined the experimental design and methodology based on advisor and reviewer feedback.</li>
+      </ul>
+    </section>
+
+    <section id="cite">
+      <h2>Citation</h2>
+      <div class="bib">
+        <button type="button" data-copy="#bibtex">Copy</button>
+<pre id="bibtex">@article{xie2026prosody,
+  title   = {Is Prosody Lost in Translation? Fine-Grained Cross-Lingual
+             Prosody Similarity Across Languages},
+  author  = {Xie, Haopeng and Ulgen, Ismail Rasim and Son, Sofia and
+             Sisman, Berrak and Koehn, Philipp},
+  journal = {arXiv preprint arXiv:2608.27848},
+  note    = {Accepted to Findings of EMNLP 2026},
+  year    = {2026}
+}</pre>
+      </div>
+    </section>
+
+  <script src="../../assets/charts.js"></script>
+  <script src="../../assets/prosody-figure.js"></script>
+  <script src="../../assets/prosody-dist.js"></script>
+  <script>
+    const f3 = v => v.toFixed(3);
+    const signed = v => (v > 0 ? '+' : '') + v.toFixed(4);
+    const PAIRS = ['DE–EN', 'EN–ES', 'EN–FR'];
+
+    // Table 2: utterance pairs after each filtering stage
+    const STAGES = ['Mined pairs', 'Audio quality (SQUIM)', 'Single speaker', 'Semantic match (SONAR)', 'Valid pitch contour'];
+    const FUNNEL = {
+      'DE–EN': [100000, 41610, 28041, 20964, 16335],
+      'EN–ES': [100000, 42974, 28990, 22598, 16939],
+      'EN–FR': [100000, 42045, 29448, 20342, 15957],
+    };
+    function drawFunnel(pair) {
+      const n = FUNNEL[pair];
+      renderBars(document.getElementById('funnel-chart'), STAGES.map((s, i) => ({
+        label: s, value: n[i],
+        tip: `<b>${pair}</b> · ${s}<br>${n[i].toLocaleString()} pairs (${(n[i] / 1000).toFixed(1)}% of mined)`,
+      })), {
+        min: 0, max: 100000, fmt: v => (v / 1000).toFixed(1) + 'K',
+        columns: [['Stage', r => r.label], ['Pairs', r => r.value.toLocaleString()]],
+      });
+    }
+    drawFunnel(segmented(document.getElementById('funnel-pair'), drawFunnel));
+
+    // Table 4: mean utterance-level Spearman correlation
+    const CORR = {
+      pitch:  [[0.229, 0.223, 0.236, 0.007], [0.241, 0.235, 0.247, 0.005], [0.246, 0.239, 0.253, 0.010]],
+      energy: [[0.183, 0.179, 0.187, 0.043], [0.174, 0.170, 0.178, 0.030], [0.176, 0.172, 0.179, 0.026]],
+    };
+    function drawCorr(feature) {
+      const name = feature === 'pitch' ? 'Pitch' : 'Energy';
+      renderBars(document.getElementById('corr-chart'), PAIRS.map((p, i) => {
+        const [m, lo, hi, sh] = CORR[feature][i];
+        return { label: p, value: m, lo, hi, base: sh,
+          tip: `<b>${name} · ${p}</b><br>Mean ρ = ${f3(m)} (95% CI ${f3(lo)}–${f3(hi)})<br>Shuffled baseline = ${f3(sh)}` };
+      }), {
+        min: 0, max: 0.3, fmt: f3,
+        columns: [['Pair', r => r.label], ['Mean ρ', r => f3(r.value)], ['95% CI', r => `${f3(r.lo)}–${f3(r.hi)}`], ['Shuffled', r => f3(r.base)]],
+      });
+    }
+    drawCorr(segmented(document.getElementById('corr-feature'), drawCorr));
+
+    // Table 5: leave-one-group-out POS effect (Δρ)
+    const POS = {
+      pitch:  { Nouns: [0.0228, 0.0208, 0.0203], Verbs: [0.0034, 0.0156, 0.0045], Modifiers: [0.0083, 0.0057, 0.0055], 'Function words': [-0.0065, 0.0108, 0.0132] },
+      energy: { Nouns: [0.0355, 0.0396, 0.0402], Verbs: [-0.0041, -0.0064, -0.0128], Modifiers: [0.0027, 0.0062, 0.0052], 'Function words': [-0.0324, -0.0203, -0.0204] },
+    };
+    let posFeature = 'energy', posPair = 0;
+    function drawPos() {
+      const name = posFeature === 'pitch' ? 'Pitch' : 'Energy';
+      renderBars(document.getElementById('pos-chart'), Object.entries(POS[posFeature]).map(([cls, v]) => ({
+        label: cls, value: v[posPair],
+        tip: `<b>${name} · ${PAIRS[posPair]} · ${cls}</b><br>Δρ = ${signed(v[posPair])}<br>${v[posPair] > 0 ? 'Removing this class lowers correspondence' : 'Removing this class raises correspondence'}`,
+      })), {
+        min: -0.04, max: 0.045, fmt: signed,
+        columns: [['Word class', r => r.label], ['Δρ', r => signed(r.value)]],
+      });
+    }
+    posFeature = segmented(document.getElementById('pos-feature'), v => { posFeature = v; drawPos(); });
+    posPair = +segmented(document.getElementById('pos-pair'), v => { posPair = +v; drawPos(); });
+    drawPos();
+  </script>
+
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> Haopeng (Jack) Xie</span>
+    <span>Last updated October 2026</span>
+  </footer>
+
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

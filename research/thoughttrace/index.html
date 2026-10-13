@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThoughtTrace · Haopeng (Jack) Xie</title>
+  <meta name="description" content="Haopeng (Jack) Xie, CS student at Johns Hopkins University researching theory of mind, multi-agent LLMs, and speech.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234a9fe0'/><text x='50' y='66' font-size='46' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' fill='white'>JX</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav class="topnav">
+    <div class="inner">
+      <a class="brand" href="../../">Haopeng (Jack) Xie</a>
+      <ul>
+        <li><a href="../../">Home</a></li>
+        <li><a href="../../research/" class="active">Research &amp; Publications</a></li>
+        <li><a href="../../experience/">Experience</a></li>
+        <li><a href="../../projects/">Fun Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="pp">
+    <a class="crumb" href="../">← All research</a>
+
+    <header class="pp-hero">
+      <h1 class="pp-title">ThoughtTrace<br><span>Understanding User Thoughts in Real-World LLM Interactions</span></h1>
+      <p class="pp-authors">
+        <a href="https://chuanyangjin.com/" target="_blank" rel="noopener">Chuanyang Jin</a><sup>1</sup>,
+        <a href="https://binzeli.github.io/" target="_blank" rel="noopener">Binze Li</a><sup>1</sup>,
+        <b>Haopeng Xie</b><sup>1</sup>,
+        <a href="https://cathy-fang.com/" target="_blank" rel="noopener">Cathy Mengying Fang</a><sup>2</sup>,
+        <a href="https://tianjianl.github.io/" target="_blank" rel="noopener">Tianjian Li</a><sup>1</sup>,
+        <a href="https://www.shaynelongpre.com/" target="_blank" rel="noopener">Shayne Longpre</a><sup>2</sup>,
+        <a href="https://hxgu.github.io/" target="_blank" rel="noopener">Hongxiang Gu</a><sup>3</sup>,
+        <a href="https://max.imillian.com/" target="_blank" rel="noopener">Maximillian Chen</a><sup>3</sup>,
+        <a href="https://www.tshu.io/" target="_blank" rel="noopener">Tianmin Shu</a><sup>1</sup>
+      </p>
+      <p class="pp-affil"><sup>1</sup>Johns Hopkins University · <sup>2</sup>MIT · <sup>3</sup>Google Research</p>
+      <div class="pp-venue">
+        <a class="chip" href="https://sites.google.com/view/rlxf-icml2026" target="_blank" rel="noopener">RLxF Workshop at ICML 2026</a>
+        <span class="badge">🏆 Best Paper Award</span>
+      </div>
+      <div class="pp-links">
+        <a href="https://arxiv.org/abs/2605.20087" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>Paper</a>
+        <a href="https://huggingface.co/datasets/SCAI-JHU/ThoughtTrace" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg>Data</a>
+        <a href="https://github.com/thoughttrace-project/thoughttrace" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>Code</a>
+        <a href="https://thoughttrace-project.github.io/ThoughtTrace_slides.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Slides</a>
+        <a href="https://thoughttrace-project.github.io/examples.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Examples</a>
+        <a href="https://thoughttrace-project.github.io" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>Project site</a>
+      </div>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><b>1,058</b><span>users</span></div>
+      <div class="stat"><b>2,155</b><span>conversations</span></div>
+      <div class="stat"><b>17,058</b><span>turns</span></div>
+      <div class="stat"><b>10,174</b><span>annotated thoughts</span></div>
+      <div class="stat"><b>20</b><span>LLMs</span></div>
+    </div>
+
+    <section>
+      <h2>Overview</h2>
+      <p class="lead">
+        Conversational AI reaches billions of users, yet existing datasets capture only what people <em>say</em>, not what they <em>think</em>.
+        ThoughtTrace is the first large-scale dataset that pairs real-world, multi-turn human–AI conversations with users' self-reported thoughts.
+      </p>
+      <p>
+        Thoughts come in two forms: <b>reasons</b> for sending a prompt and <b>reactions</b> to the assistant's response.
+        They are distinct from messages, hard for frontier LLMs to infer, and useful for predicting user behavior and aligning models.
+      </p>
+      <figure class="figure">
+        <img src="https://thoughttrace-project.github.io/assets/figures/example.gif" alt="Example ThoughtTrace conversation with a user's annotated reasons and reactions" loading="lazy">
+        <figcaption>A representative example: a user chats with an assistant (top) while annotating the thoughts behind each turn (bottom). Figure from the <a href="https://thoughttrace-project.github.io" target="_blank" rel="noopener">project site</a>.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>Findings</h2>
+
+      <div class="finding">
+        <div class="kicker">Finding 1</div>
+        <h3>Thoughts are hard for LLMs to infer</h3>
+        <p>GPT, Gemini, and Claude struggle to recover users' thoughts from context alone. On a 1–5 similarity scale, predicted thoughts score only <b>2.93</b> for reasons and <b>2.54</b> for reactions. Thoughts carry information that never appears in the messages.</p>
+      </div>
+
+      <div class="finding">
+        <div class="kicker">Finding 2</div>
+        <h3>Thoughts predict what users say next</h3>
+        <p>Giving models the annotated thoughts raises next-message prediction similarity from 21.6 to 30.6 on average, a <b>41.7% relative gain</b>.</p>
+        <div class="chart-head">
+          <div class="legend"><span><i class="sw"></i>With thoughts</span><span><i class="tick"></i>History only</span></div>
+        </div>
+        <div id="predict-chart"></div>
+      </div>
+
+      <div class="finding">
+        <div class="kicker">Finding 3</div>
+        <h3>Thoughts improve model alignment</h3>
+        <p>Training on thought-guided rewrites beats message-guided rewrites on Arena-Hard by <b>4.5 points</b>, and the base model by <b>25.6 points</b> (style-controlled win rate).</p>
+        <div class="chart-head">
+          <div class="legend"><span><i class="sw"></i>Arena-Hard win rate (%)</span></div>
+          <div class="controls"><div class="seg" id="align-metric"><button data-value="0" aria-pressed="true">Win rate</button><button data-value="1">Style-controlled</button></div></div>
+        </div>
+        <div id="align-chart"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>My role</h2>
+      <ul>
+        <li>Contributed to building the dataset.</li>
+        <li>Developed the evaluation pipelines and ran experiments comparing model-predicted thoughts with human annotations.</li>
+      </ul>
+    </section>
+
+    <section id="cite">
+      <h2>Citation</h2>
+      <div class="bib">
+        <button type="button" data-copy="#bibtex">Copy</button>
+<pre id="bibtex">@article{jin2026thoughttrace,
+  title   = {ThoughtTrace: Understanding User Thoughts in Real-World LLM Interactions},
+  author  = {Jin, Chuanyang and Li, Binze and Xie, Haopeng and Fang, Cathy Mengying and
+             Li, Tianjian and Longpre, Shayne and Gu, Hongxiang and Chen, Maximillian and
+             Shu, Tianmin},
+  journal = {arXiv preprint arXiv:2605.20087},
+  year    = {2026}
+}</pre>
+      </div>
+    </section>
+
+  <script src="../../assets/charts.js"></script>
+  <script>
+    // Table 1: next-user-message prediction (semantic similarity)
+    const PRED = [['GPT', 21.4, 27.4], ['Gemini', 22.1, 28.9], ['Opus', 21.3, 35.5], ['Average', 21.6, 30.6]];
+    renderBars(document.getElementById('predict-chart'), PRED.map(([m, hist, thought]) => ({
+      label: m, value: thought, base: hist,
+      tip: `<b>${m}</b><br>With thoughts: ${thought.toFixed(1)}<br>History only: ${hist.toFixed(1)}<br>+${((thought / hist - 1) * 100).toFixed(1)}% relative`,
+    })), {
+      min: 0, max: 40, fmt: v => v.toFixed(1),
+      columns: [['Model', r => r.label], ['History only', r => r.base.toFixed(1)], ['With thoughts', r => r.value.toFixed(1)]],
+    });
+
+    // Table 2: Arena-Hard win rate / style-controlled win rate
+    const ALIGN = [['Base (Qwen3.5-4B)', 24.6, 22.5], ['WildChat', 41.8, 41.5], ['ThoughtTrace (messages)', 44.0, 43.6], ['ThoughtTrace (thoughts)', 47.9, 48.1]];
+    function drawAlign(metric) {
+      const k = +metric + 1, name = metric === '0' ? 'Win rate' : 'Style-controlled win rate';
+      renderBars(document.getElementById('align-chart'), ALIGN.map(r => ({
+        label: r[0], value: r[k], tip: `<b>${r[0]}</b><br>${name}: ${r[k].toFixed(1)}%`,
+      })), {
+        min: 0, max: 50, fmt: v => v.toFixed(1),
+        columns: [['Training data', r => r.label], [name + ' (%)', r => r.value.toFixed(1)]],
+      });
+    }
+    drawAlign(segmented(document.getElementById('align-metric'), drawAlign));
+  </script>
+
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> Haopeng (Jack) Xie</span>
+    <span>Last updated October 2026</span>
+  </footer>
+
+  <script src="../../assets/site.js"></script>
+</body>
+</html>
