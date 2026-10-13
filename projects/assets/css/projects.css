@@ -1,0 +1,10 @@
+.fun-projects-page { max-width: 960px; }
+.fun-projects-page .projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+a.project-tile { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--text); text-decoration: none; transition: transform .2s, border-color .2s, box-shadow .2s; }
+.project-tile img { display: block; width: 100%; aspect-ratio: 18 / 11; object-fit: cover; }
+.project-tile.portrait img { object-position: center 35%; }
+.project-tile h3 { font-size: .93rem; line-height: 1.45; margin: 0; padding: 13px 15px; }
+a.project-tile:hover { transform: translateY(-3px); border-color: #a9cff2; box-shadow: 0 8px 22px -14px rgba(47,134,212,.55); }
+a.project-tile:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+@media (max-width: 700px) { .fun-projects-page .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } .project-tile h3 { font-size: .82rem; padding: 11px; } }
+@media (prefers-reduced-motion: reduce) { a.project-tile { transition: none; } }
