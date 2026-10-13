@@ -6,6 +6,7 @@ a.experience-card { display: grid; grid-template-columns: 156px minmax(0, 1fr); 
 .experience-media img { width: 100%; max-height: 110px; object-fit: contain; }
 .scai .experience-media { background: #f5f1fb; }
 .scai .experience-media img { max-height: 120px; }
+.clsp .experience-media { background: #fff; }
 .supio .experience-media { background: #f0f1fa; }
 .athletics .experience-media { background: #e8f3fd; }
 .athletics .experience-media img { max-height: 112px; }
@@ -16,9 +17,6 @@ a.experience-card { display: grid; grid-template-columns: 156px minmax(0, 1fr); 
 .experience-desc { display: block; font-size: .88rem; line-height: 1.6; color: #344255; margin-top: 7px; }
 .experience-advisors { display: block; font-size: .76rem; line-height: 1.6; color: var(--muted); margin-top: 7px; }
 .experience-card .go { font-size: .78rem; margin-top: 12px; }
-.clsp-wordmark { font-size: 2rem; color: #155a96; font-weight: 700; letter-spacing: .04em; }
-.clsp-caption { font-size: .62rem; color: #48637e; white-space: nowrap; }
-.speech-wave { width: 110px; color: #5a9ed5; margin-top: 6px; }
 @media (max-width: 600px) {
   a.experience-card { grid-template-columns: 88px minmax(0, 1fr); border-radius: 12px; }
   .experience-media { padding: 12px; }
@@ -27,8 +25,5 @@ a.experience-card { display: grid; grid-template-columns: 156px minmax(0, 1fr); 
   .experience-meta { font-size: .7rem; }
   .experience-desc { font-size: .8rem; }
   .experience-advisors { font-size: .72rem; }
-  .clsp-wordmark { font-size: 1.2rem; }
-  .clsp-caption { font-size: .43rem; }
-  .speech-wave { width: 62px; }
 }
 @media (prefers-reduced-motion: reduce) { a.experience-card { transition: none; } }

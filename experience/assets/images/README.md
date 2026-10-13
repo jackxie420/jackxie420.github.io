@@ -7,4 +7,4 @@
 - Men's Club Soccer: https://jhu.campusgroups.com/jhumensclubsoccer/home/
 - Men's Club Hockey: https://pages.jh.edu/icehockey/
 
-SCAI, Supio, and JHU images remain in their existing owning folders. The CLSP panel is a text treatment with a decorative waveform, not an official logo.
+SCAI, Supio, and JHU images remain in their existing owning folders. The CLSP panel uses the official GitHub organization emblem; see `../../clsp/assets/images/README.md`.
