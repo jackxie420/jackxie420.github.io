@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hold’em Lab · Haopeng (Jack) Xie</title>
+  <meta name="description" content="An interactive Texas Hold’em study tool: select your cards, calculate equity on every street, explore sourced preflop strategies, and launch a full postflop GTO solver.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234a9fe0'/><text x='50' y='66' font-size='46' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' fill='white'>JX</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/site.css?v=5fcada8d8a73">
+  <link rel="stylesheet" href="assets/css/lab.css?v=c75a03d0c4f4">
+</head>
+<body>
+  <nav class="topnav"><div class="inner"><a class="brand" href="../../">Haopeng (Jack) Xie</a><ul><li><a href="../../">Home</a></li><li><a href="../../research/">Research &amp; Publications</a></li><li><a href="../../experience/">Experience</a></li><li><a href="../" class="active">Fun Projects</a></li></ul></div></nav>
+  <main class="holdem-page">
+    <a class="crumb" href="../">← All fun projects</a>
+    <header class="lab-header"><p class="eyebrow">A little decision science</p><h1>Hold’em Lab <span>GTO &amp; equity</span></h1><p>Choose your cards. Explore the odds. Study the strategy.</p></header>
+    <div class="lab-layout">
+      <div class="lab-inputs">
+        <section class="lab-panel" aria-labelledby="cards-heading">
+          <div class="panel-heading"><h2 id="cards-heading">Build your hand</h2><span class="pill">Heads-up · 2 players</span></div>
+          <div class="street-tabs" role="group" aria-label="Betting street"><button type="button" data-street="preflop" aria-pressed="true">Preflop</button><button type="button" data-street="flop" aria-pressed="false">Flop</button><button type="button" data-street="turn" aria-pressed="false">Turn</button><button type="button" data-street="river" aria-pressed="false">River</button></div>
+          <div class="hole-groups"><div><h3>Your hole cards</h3><div id="hero-slots" class="slots hole-slots"></div></div><div id="villain-cards" hidden><h3>Opponent’s cards</h3><div id="villain-slots" class="slots hole-slots"></div></div></div>
+          <div class="board-heading"><h3>Community cards</h3><span id="board-caption">No board before the flop</span></div>
+          <div id="board-slots" class="slots community-slots"></div>
+          <div class="picker-heading"><p id="picker-target">Choose a card</p><button type="button" id="clear-slot" class="text-button">Clear selected slot</button></div>
+          <div id="deck" class="deck" role="group" aria-labelledby="picker-target"></div>
+          <p class="input-note">Click a card slot, then choose from the deck. Used cards are unavailable.</p>
+          <div class="examples" role="group" aria-label="Example hands"><span>Try a spot</span><button type="button" data-example="aces">AA vs KK</button><button type="button" data-example="draw">Flop draw</button><button type="button" data-example="turn">Turn</button><button type="button" data-example="river">River</button></div>
+        </section>
+        <section class="lab-panel" aria-labelledby="opponent-heading">
+          <h2 id="opponent-heading">Define the opponent</h2>
+          <label for="opponent-mode">Opponent’s hand</label><select id="opponent-mode"><option value="random">Any two cards · uniform random</option><option value="range">A range of hands</option><option value="exact">Two specific cards</option></select>
+          <div id="range-controls" hidden><label for="opponent-range">Opponent range</label><textarea id="opponent-range" rows="2" spellcheck="false">TT+,AJs+,KQs,AQo+</textarea><p class="input-note">Examples: <code>TT+</code>, <code>AJs+</code>, <code>AK</code>, <code>22-66</code>, <code>AsKh</code>, <code>AQs:0.5</code>. Overlapping terms count once. Ranges are your assumptions.</p></div>
+          <div class="field-grid"><div><label for="pot">Pot before opponent’s bet (bb)</label><input id="pot" type="number" min="0" max="1000000" step="0.5" value="10"></div><div><label for="bet">Bet to call (bb)</label><input id="bet" type="number" min="0" max="1000000" step="0.5" value="5"></div></div>
+          <div class="calculation-controls"><div><label for="samples">Simulation precision</label><select id="samples"><option value="10000">Quick · 10,000 deals</option><option value="30000" selected>Standard · 30,000 deals</option><option value="100000">Detailed · 100,000 deals</option></select></div><button type="button" id="calculate" class="primary-button">Calculate equity</button></div>
+          <p class="input-note">Small outcome spaces are counted exhaustively, regardless of the simulation setting.</p>
+        </section>
+      </div>
+      <div class="lab-results">
+        <section class="lab-panel equity-panel" aria-labelledby="equity-heading">
+          <div class="panel-heading"><h2 id="equity-heading">Your equity</h2><span id="method-pill" class="pill">Ready</span></div>
+          <div class="equity-number"><span id="equity-value">—</span><span class="equity-unit">of the pot at showdown</span></div>
+          <div class="equity-track" aria-hidden="true"><span id="win-bar"></span><span id="tie-bar"></span></div>
+          <div class="outcome-grid"><div><span class="dot win-dot"></span>Win<strong id="win-value">—</strong></div><div><span class="dot tie-dot"></span>Tie<strong id="tie-value">—</strong></div><div><span class="dot lose-dot"></span>Lose<strong id="lose-value">—</strong></div></div>
+          <div id="progress" class="progress" role="progressbar" aria-label="Equity calculation progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></div>
+          <p id="calculation-status" class="result-note" role="status" aria-live="polite">Choose your hand and calculate.</p>
+          <div class="odds-grid"><div><span>Break-even equity</span><strong id="required-equity">25.0%</strong></div><div><span>Showdown-only call EV</span><strong id="call-ev">—</strong></div></div>
+          <p id="odds-note" class="input-note">Equity includes half of ties. Call EV assumes no future betting or rake; it is not a GTO action recommendation.</p>
+        </section>
+        <section id="preflop-panel" class="lab-panel" aria-labelledby="preflop-heading">
+          <div class="panel-heading"><h2 id="preflop-heading">Preflop strategy</h2><span class="pill">Sourced solver data</span></div>
+          <div class="field-grid"><div><label for="stack">Effective stack</label><select id="stack"><option value="20">20 bb</option><option value="40">40 bb</option><option value="100" selected>100 bb</option></select></div><div><label for="preflop-spot">Your decision</label><select id="preflop-spot"><option value="sb-first">SB / button · unopened</option><option value="bb-limp">BB · facing a limp</option><option value="bb-open2">BB · facing a 2 bb open</option><option value="bb-open3">BB · facing a 3 bb open</option></select></div></div>
+          <p id="preflop-hand" class="strategy-hand">Choose your cards</p><div id="strategy-bars" class="strategy-bars"></div>
+          <p id="preflop-status" class="input-note">Loading the published blueprint…</p>
+          <p class="source-note">Heads-up · no ante or rake · 25,000 DCFR iterations. This source approximates postflop continuation using all-in equity; it does not certify a full-game GTO equilibrium. <a href="#sources">Source &amp; assumptions ↓</a></p>
+          <details class="range-chart"><summary>Explore all 169 starting hands</summary><p class="input-note">Click a hand to select it. Red = raise/all-in, blue = limp/call/check, gray = fold.</p><div id="range-matrix" class="range-matrix" aria-label="Preflop starting-hand strategy matrix"></div></details>
+        </section>
+        <section class="lab-panel solver-panel" aria-labelledby="solver-heading">
+          <div class="panel-heading"><h2 id="solver-heading">Full postflop GTO</h2><span class="pill">External solver</span></div>
+          <p>For flop, turn, and river strategy, use <strong>WASM Postflop</strong>: a real range-vs-range solver with configurable bet sizes and exploitability targets.</p>
+          <details id="solver-setup"><summary>Prepare your solver setup</summary>
+            <div class="field-grid"><div><label for="solver-stack">Effective remaining stack (bb)</label><input id="solver-stack" type="number" min="0.5" step="0.5" value="100"></div><div><label for="hero-position">Your postflop position</label><select id="hero-position"><option value="oop">Out of position</option><option value="ip">In position</option></select></div></div>
+            <label for="hero-range">Your range · not just your selected hand</label><textarea id="hero-range" rows="2" spellcheck="false">77+,ATs+,KQs,AQo+</textarea>
+            <label for="solver-villain-range">Opponent range for the solver</label><textarea id="solver-villain-range" rows="2" spellcheck="false">55+,A9s+,KTs+,QTs+,JTs,ATo+,KQo</textarea>
+            <p class="input-note">These editable ranges are starting assumptions, not solver-derived preflop ranges. Changing your equity opponent does not change these solver ranges.</p>
+            <label for="setup-text">Setup notes to paste alongside the solver</label><textarea id="setup-text" rows="7" readonly spellcheck="false"></textarea>
+            <button type="button" id="copy-setup" class="secondary-button">Copy setup</button><p id="copy-status" class="input-note" role="status" aria-live="polite"></p>
+          </details>
+          <a id="open-solver" class="primary-button solver-link" href="https://wasm-postflop.pages.dev/" target="_blank" rel="noopener">Open full GTO solver ↗</a>
+          <p class="input-note">Opens the original solver in a new tab. Enter the board and ranges from your setup there, build a betting tree, then solve. Results stay in that interface; setup is not imported automatically.</p>
+        </section>
+      </div>
+    </div>
+    <section id="sources" class="lab-panel methodology" aria-labelledby="sources-heading">
+      <h2 id="sources-heading">Data &amp; methods</h2>
+      <div class="method-grid"><div><h3>Real hand calculations</h3><p>Equity is calculated from the 52-card deck and standard best-five-of-seven Hold’em rankings. Your cards, board, and opponent cards cannot overlap. Opponent ranges retain their combo weights after blockers. Exact results count every valid outcome; simulations sample legal deals and show an approximate 95% sampling margin.</p><p><a href="https://www.pokerstars.com/poker/games/rules/hand-rankings/" target="_blank" rel="noopener">Hand-ranking reference ↗</a></p></div><div><h3>Traceable preflop data</h3><p>Frequencies are copied without rounding from the MIT-licensed <a href="https://github.com/amaster97/poker_solver/tree/f78f1b2bc338dd8cbb5226ecb8398bbdb3635676/assets/blueprints" target="_blank" rel="noopener">poker_solver blueprint</a>: 169 classes, four decisions, and 20/40/100 bb stacks. The data records the original configuration and SHA-256 hashes. Upstream reports no final exploitability measurement; frequencies are model estimates, not verified commercial GTO charts.</p><p><a href="assets/data/preflop.json" target="_blank" rel="noopener">Inspect the data</a> · <a href="assets/data/SOLVER-LICENSE.txt" target="_blank" rel="noopener">MIT license</a></p></div><div><h3>Full postflop solving</h3><p><a href="https://github.com/b-inary/wasm-postflop" target="_blank" rel="noopener">WASM Postflop by Wataru Inariba</a> runs its own Discounted CFR solver. Strategy depends on both ranges, the board, position, pot, remaining stacks, and betting tree. The launcher keeps this solver separate from the equity calculation. Confirm its settings and convergence before interpreting a strategy.</p><p><a href="https://github.com/b-inary/postflop-solver" target="_blank" rel="noopener">Solver engine &amp; methodology ↗</a></p></div></div>
+    </section>
+    <noscript><p>This calculator needs JavaScript. The full postflop solver link above is still available.</p></noscript>
+  </main>
+  <footer><span>© <span id="year"></span> Haopeng (Jack) Xie</span><span>Study the decisions, not just the outcomes.</span></footer>
+  <script type="module" src="assets/js/lab.js?v=dcf9b114b3c2"></script><script src="../../assets/js/site.js?v=4989c2d1e2af"></script>
+</body>
+</html>

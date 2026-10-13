@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 390">
+<defs><linearGradient id="felt" x2="1" y2="1"><stop stop-color="#164d4b"/><stop offset="1" stop-color="#0a303b"/></linearGradient></defs>
+<rect width="600" height="390" rx="18" fill="url(#felt)"/>
+<rect x="20" y="20" width="560" height="350" rx="75" fill="none" stroke="#77aaa5" opacity=".25"/>
+<text x="42" y="65" fill="#c0dad8" font-family="Arial,sans-serif" font-size="17" letter-spacing="3">HOLD’EM LAB</text>
+<g fill="#fafcff" stroke="#d2e0e5"><rect x="48" y="112" width="102" height="146" rx="9" transform="rotate(-8 99 185)"/><rect x="149" y="112" width="102" height="146" rx="9" transform="rotate(6 200 185)"/>
+<rect x="316" y="145" width="68" height="96" rx="6"/><rect x="393" y="145" width="68" height="96" rx="6"/><rect x="470" y="145" width="68" height="96" rx="6"/></g>
+<g font-family="Arial,sans-serif" font-size="39" font-weight="700" text-anchor="middle"><text x="92" y="178" fill="#1d2939">A</text><text x="92" y="221" fill="#1d2939">♠</text><text x="203" y="178" fill="#bf474a">K</text><text x="203" y="221" fill="#bf474a">♥</text></g>
+<g font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle"><text x="350" y="185" fill="#1d2939">Q</text><text x="350" y="216" fill="#1d2939">♠</text><text x="427" y="185" fill="#bf474a">J</text><text x="427" y="216" fill="#bf474a">♥</text><text x="504" y="185" fill="#1d2939">2</text><text x="504" y="216" fill="#1d2939">♣</text></g>
+<text x="48" y="313" fill="#e1f0ed" font-family="Arial,sans-serif" font-size="19">Cards. Equity. Strategy.</text><path d="M48 334H552" stroke="#6cacaa" opacity=".4"/>
+</svg>
