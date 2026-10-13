@@ -667,59 +667,22 @@ a.org-logo:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -14px rg
   .kv div { grid-template-columns: 1fr; gap: 2px; }
 }
 
-/* Research cards with a real figure on the left (identical frame for every entry) */
-.rcard.with-thumb { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 20px; align-items: center; padding: 16px; }
-.rthumb {
-  display: block; width: 240px; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden;
-  background: #fff; border: 1px solid var(--line); padding: 6px;
-}
-.rthumb img { width: 100%; height: 100%; object-fit: contain; display: block; transition: transform .4s ease; }
-.rcard.with-thumb:hover .rthumb img { transform: scale(1.03); }
+/* Research figures use the full card width at their natural proportions. */
+.list.eq { gap: 18px; grid-auto-rows: auto; }
+.list.eq > li, .list.eq > li > .rcard { height: auto; }
+.rcard.with-thumb { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 16px; }
+.rthumb { display: block; width: 100%; overflow: hidden; border-radius: 8px; background: #fff; }
+.rthumb img { display: block; width: 100%; height: auto; }
 .rbody { min-width: 0; }
-@media (max-width: 640px) {
-  .rcard.with-thumb { grid-template-columns: 1fr; gap: 12px; }
-  .rthumb { width: 100%; }
-}
-
-
-/* every research entry the same size */
-.list.eq { grid-auto-rows: 1fr; }
-.list.eq > li, .list.eq > li > .rcard { height: 100%; }
-.rcard.with-thumb { grid-template-columns: 260px minmax(0, 1fr); }
-.rthumb { width: 260px; padding: 4px; }
-@media (max-width: 640px) { .rcard.with-thumb { grid-template-columns: 1fr; } .rthumb { width: 100%; } .list.eq { grid-auto-rows: auto; } }
-
-/* Compact research rows (fit more projects at once) */
-.list.eq { gap: 10px; }
-.rcard.with-thumb { grid-template-columns: 184px minmax(0, 1fr); gap: 16px; padding: 12px 14px; }
-.rthumb { width: 184px; padding: 3px; border-radius: 8px; }
-.rcard.with-thumb .item-head h3 { font-size: .98rem; }
+.rcard.with-thumb .item-head h3 { font-size: 1.02rem; }
 .rcard.with-thumb .sub { font-size: .84rem; margin: 0; }
-.rcard.with-thumb .desc {
-  margin: 4px 0 6px; font-size: .88rem; line-height: 1.45;
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-}
-.rcard.with-thumb .publine { padding: 5px 8px; font-size: .82rem; align-items: center; gap: 8px; border-radius: 6px; }
-.rcard.with-thumb .publine .label { margin-top: 0; font-size: .64rem; padding: 1px 6px; }
-.rcard.with-thumb .publine > div { display: flex; align-items: center; gap: 6px; min-width: 0; white-space: nowrap; }
-.rcard.with-thumb .publine .ptitle { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
-.rcard.with-thumb .publine .venue { font-size: .8rem; flex-shrink: 0; color: var(--muted); }
-.rcard.with-thumb .publine .venue::before { content: "· "; font-style: normal; }
-.rcard.with-thumb .publine .badge { margin-left: 2px; font-size: .68rem; padding: 1px 6px; flex-shrink: 0; }
-@media (max-width: 640px) {
-  .rcard.with-thumb { grid-template-columns: 1fr; }
-  .rthumb { width: 100%; }
-  .rcard.with-thumb .publine > div { flex-wrap: wrap; white-space: normal; }
-}
-/* show full paper titles: title on its own line(s), venue + badge below */
-.rcard.with-thumb { grid-template-columns: 200px minmax(0, 1fr); padding: 14px 16px; }
-.rthumb { width: 200px; }
-.rcard.with-thumb .publine { align-items: flex-start; padding: 7px 10px; }
-.rcard.with-thumb .publine .label { margin-top: 2px; }
-.rcard.with-thumb .publine > div { display: block; white-space: normal; }
-.rcard.with-thumb .publine .ptitle { overflow: visible; font-size: .84rem; line-height: 1.4; }
-.rcard.with-thumb .publine .venue::before { content: ""; }
-@media (max-width: 640px) { .rthumb { width: 100%; } }
+.rcard.with-thumb .desc { margin: 6px 0 10px; font-size: .88rem; line-height: 1.5; }
+.rcard.with-thumb .publine { align-items: flex-start; padding: 7px 10px; gap: 8px; border-radius: 6px; }
+.rcard.with-thumb .publine .label { margin-top: 2px; font-size: .64rem; padding: 1px 6px; }
+.rcard.with-thumb .publine > div { display: block; min-width: 0; }
+.rcard.with-thumb .publine .ptitle { font-size: .84rem; line-height: 1.4; }
+.rcard.with-thumb .publine .venue { font-size: .8rem; color: var(--muted); }
+.rcard.with-thumb .publine .badge { margin-left: 6px; font-size: .68rem; padding: 1px 6px; }
 .tile-note { display: block; margin-top: 6px; font-size: .74rem; color: var(--muted); }
 .figure.narrow { max-width: 520px; }
 
@@ -806,10 +769,6 @@ a.org-logo:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -14px rg
   font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
   color: #fff; background: var(--blue); padding: 2px 8px; border-radius: 999px; vertical-align: 1px;
 }
-
-/* Authorship is visible before opening a research project. */
-.authorship { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 5px 0 7px; font-size: .8rem; color: var(--blue-dark); }
-.first-author { display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 6px; background: #1f6db3; color: #fff; font-size: .73rem; font-weight: 700; letter-spacing: .02em; }
 
 /* Keep cards and figure controls inside narrow phone screens. */
 @media (max-width: 640px) {
