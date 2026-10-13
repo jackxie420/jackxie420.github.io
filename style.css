@@ -831,3 +831,8 @@ a.org-logo:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -14px rg
   .topnav ul a { padding-top: 8px; padding-bottom: 8px; }
   .seg button, .play-btn { min-height: 40px; }
 }
+
+/* Full author credits remain readable on research cards. */
+.card-authors { margin: 4px 0 7px; font-size: .8rem; line-height: 1.5; color: var(--muted); overflow-wrap: anywhere; }
+.card-authors strong { color: var(--text); font-weight: 700; }
+.links .cv-link { color: var(--blue-dark); font-weight: 700; }
