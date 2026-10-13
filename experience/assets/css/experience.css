@@ -11,6 +11,7 @@ a.experience-card { display: grid; grid-template-columns: 156px minmax(0, 1fr); 
 .supio .experience-media { background: #f0f1fa; }
 .athletics .experience-media { background: #e8f3fd; }
 .athletics .experience-media img { max-height: 112px; }
+.hockey .experience-media img { border-radius: 50%; }
 .experience-content { display: flex; flex-direction: column; align-items: flex-start; padding: 21px 24px; min-width: 0; }
 .experience-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 5px 16px; width: 100%; color: var(--muted); font-size: .75rem; line-height: 1.5; margin-bottom: 8px; }
 .experience-meta .date { font-size: inherit; }
