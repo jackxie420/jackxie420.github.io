@@ -449,18 +449,7 @@ a.plain:hover { color: var(--blue); text-decoration: none; }
 #dist .d-hit.hot { fill: rgba(29,41,57,.06); }
 .readout .muted { color: var(--muted); }
 
-/* Homepage background art (cat drawing) */
-.home-art {
-  position: fixed; z-index: 0; pointer-events: none; user-select: none;
-  left: calc(max(0px, (100vw - 1040px) / 2) + 20px); bottom: 104px;
-  width: min(215px, 18vw, calc((100vh - 662px) / 1.35)); height: auto; opacity: .55;
-}
 .page, footer { position: relative; z-index: 1; }
-@media (max-height: 880px) { .home-art { opacity: .45; bottom: 76px; width: min(190px, 18vw, calc((100vh - 628px) / 1.35)); } }
-@media (max-height: 760px) { .home-art { display: none; } }
-@media (max-width: 820px) {
-  .home-art { left: auto; right: -10px; bottom: 10px; width: 160px; opacity: .14; display: block; }
-}
 
 /* Painting card + page */
 .proj.art img { width: 150px; height: 190px; object-fit: cover; object-position: top; }
@@ -816,4 +805,29 @@ a.org-logo:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -14px rg
   content: "Auto-playing · hover to explore"; display: inline-block; margin-right: 8px;
   font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
   color: #fff; background: var(--blue); padding: 2px 8px; border-radius: 999px; vertical-align: 1px;
+}
+
+/* Authorship is visible before opening a research project. */
+.authorship { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 5px 0 7px; font-size: .8rem; color: var(--blue-dark); }
+.first-author { display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 6px; background: #1f6db3; color: #fff; font-size: .73rem; font-weight: 700; letter-spacing: .02em; }
+
+/* Keep cards and figure controls inside narrow phone screens. */
+@media (max-width: 640px) {
+  .rcard.with-thumb { grid-template-columns: minmax(0, 1fr); }
+  .rthumb { width: 100%; }
+  .list.eq { grid-auto-rows: auto; }
+  .list.eq > li, .list.eq > li > .rcard { height: auto; }
+  .seg { max-width: 100%; flex-wrap: wrap; }
+  .seg button { flex: 1 1 auto; white-space: normal; }
+  .ex-tabs { display: flex; }
+  .chart-head, .controls { min-width: 0; max-width: 100%; }
+  .sentence { padding: 16px 14px; }
+  .readout { overflow-wrap: anywhere; }
+  h2 { flex-wrap: wrap; gap: 4px 12px; }
+}
+@media (max-width: 640px) {
+  .tl-top { flex-wrap: wrap; }
+  .topnav ul { flex-wrap: wrap; overflow: visible; }
+  .topnav ul a { padding-top: 8px; padding-bottom: 8px; }
+  .seg button, .play-btn { min-height: 40px; }
 }

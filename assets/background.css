@@ -1,0 +1,17 @@
+/* Shared decorative cat drawing on every page. */
+body { isolation: isolate; }
+body::before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  left: max(16px, calc((100vw - 1040px) / 2 - 190px));
+  bottom: 24px;
+  width: clamp(150px, 16vw, 215px);
+  aspect-ratio: 368 / 496;
+  background: url("img/cat-drawing.png") center / contain no-repeat;
+  opacity: .3;
+  pointer-events: none;
+}
+@media (max-width: 820px) {
+  body::before { left: auto; right: 8px; bottom: 12px; width: 150px; opacity: .1; }
+}
