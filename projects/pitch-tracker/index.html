@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Pitch Tracker · Haopeng (Jack) Xie</title>
+  <meta name="description" content="Speak or sing and watch your voice's pitch contour drawn live in the browser. No audio is recorded or stored.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234a9fe0'/><text x='50' y='66' font-size='46' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' fill='white'>JX</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/site.css?v=80675a1d4672">
+  <link rel="stylesheet" href="assets/css/tracker.css?v=13b190b760b5">
+</head>
+<body>
+  <nav class="topnav">
+    <div class="inner">
+      <a class="brand" href="../../">Haopeng (Jack) Xie</a>
+      <ul>
+        <li><a href="../../">Home</a></li>
+        <li><a href="../../research/">Research &amp; Publications</a></li>
+        <li><a href="../../experience/">Experience</a></li>
+        <li><a href="../" class="active">Fun Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="pp">
+    <a class="crumb" href="../">← All fun projects</a>
+
+    <header class="pp-hero">
+      <h1 class="pp-title">Live Pitch Tracker<br><span>See the melody of your voice</span></h1>
+      <p class="pp-affil">The same kind of pitch (F0) contour I analyze in my <a href="../../research/cross-lingual-prosody/">prosody research</a>, drawn live from your microphone.</p>
+    </header>
+
+    <div class="pt-card">
+      <div class="pt-top">
+        <div class="pt-readout"><b id="pt-hz">–</b><span>Hz</span><em id="pt-note"></em></div>
+        <div class="pt-controls">
+          <label class="pick">Voice range
+            <select id="pt-range"><option value="speech" selected>Any voice (65–450 Hz)</option><option value="low">Lower voice (65–260 Hz)</option><option value="high">Higher voice (130–520 Hz)</option></select>
+          </label>
+          <button type="button" class="pt-btn" id="pt-start">● Start</button>
+          <button type="button" class="pt-btn ghost" id="pt-clear">Clear</button>
+        </div>
+      </div>
+      <canvas id="pt-canvas" aria-label="Live pitch contour of your voice"></canvas>
+      <p class="pt-status" id="pt-status">Press Start, allow microphone access, and speak or sing.</p>
+    </div>
+
+    <section>
+      <h2>Things to try</h2>
+      <ul class="pt-tips">
+        <li><b>Ask a question, then make a statement.</b> "You're coming?" rises at the end; "You're coming." falls.</li>
+        <li><b>Stress different words.</b> "<i>I</i> didn't say that" vs. "I didn't say <i>that</i>": watch where the pitch peaks.</li>
+        <li><b>Say a sentence in another language.</b> Tonal languages like Mandarin show pitch shapes on every syllable.</li>
+        <li><b>Notice the gaps.</b> Sounds like "s" and "f" have no pitch, so the line breaks there, just like the unvoiced regions in my papers' figures.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Privacy</h2>
+      <div class="pt-privacy">
+        <p><b>Nothing is recorded or kept.</b> Your audio is analyzed in your browser one 40-millisecond slice at a time, and each slice is discarded right after its pitch is measured.</p>
+        <ul>
+          <li>No audio or pitch data is uploaded, saved to disk, or stored in the browser.</li>
+          <li>Only the pitch numbers for the last ~10 seconds are kept in memory to draw the line. <b>Clear</b>, <b>Stop</b>, or leaving the page removes them.</li>
+          <li>The microphone turns off when you press Stop, switch tabs, or leave the page.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>How it works</h2>
+      <p>The tracker uses the <b>YIN</b> algorithm (de Cheveigné &amp; Kawahara, 2002). About 66 times per second it compares a slice of your voice with time-shifted copies of itself; the shift where the signal best repeats is one pitch period. A confidence threshold separates voiced sounds from silence and consonants, and a short median filter removes stray jumps. The pitch axis is logarithmic, so equal musical steps look equal.</p>
+    </section>
+    <noscript><p>The pitch tracker needs JavaScript enabled.</p></noscript>
+  </main>
+  <footer><span>© <span id="year"></span> Haopeng (Jack) Xie</span><span>Your voice never leaves your device.</span></footer>
+  <script src="assets/js/pitch-tracker.js?v=ed092666ebcd"></script>
+  <script src="../../assets/js/site.js?v=4989c2d1e2af"></script>
+</body>
+</html>

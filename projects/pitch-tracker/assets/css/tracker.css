@@ -1,0 +1,23 @@
+/* Live pitch tracker page */
+.pt-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; margin-bottom: 40px; box-shadow: 0 14px 34px -26px rgba(16,40,80,.45); }
+.pt-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+.pt-readout { display: flex; align-items: baseline; gap: 6px; }
+.pt-readout b { font-size: 2.4rem; font-weight: 700; color: var(--blue-dark); font-variant-numeric: tabular-nums; min-width: 3ch; text-align: right; }
+.pt-readout span { color: var(--muted); font-weight: 600; }
+.pt-readout em { font-style: normal; margin-left: 8px; font-size: 1rem; font-weight: 700; color: #344255; background: var(--blue-soft); padding: 2px 10px; border-radius: 999px; }
+.pt-readout em:empty { display: none; }
+.pt-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.pt-controls .pick { font-size: .85rem; color: var(--muted); gap: 8px; }
+.pt-btn { border: 0; cursor: pointer; font: 600 .92rem var(--sans); padding: 9px 18px; border-radius: 999px; background: linear-gradient(120deg, #2563eb, #0ea5e9); color: #fff; box-shadow: 0 8px 22px -10px rgba(37,99,235,.7); }
+.pt-btn.live { background: #c0392b; box-shadow: 0 8px 22px -10px rgba(192,57,43,.7); }
+.pt-btn.ghost { background: #fff; color: var(--muted); border: 1px solid var(--line); box-shadow: none; }
+.pt-btn:disabled { opacity: .5; cursor: not-allowed; }
+#pt-canvas { display: block; width: 100%; height: 320px; border-radius: 10px; border: 1px solid var(--line); background: #fff; }
+.pt-status { margin: 10px 0 0 !important; font-size: .88rem; color: var(--muted); }
+.live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #c0392b; margin-right: 8px; animation: pt-blink 1.2s infinite; }
+@keyframes pt-blink { 50% { opacity: .25; } }
+.pt-tips { margin: 0; padding-left: 20px; } .pt-tips li { margin-bottom: 8px; color: #344255; }
+.pt-privacy { background: #effaf4; border: 1px solid #c9ead8; border-radius: 12px; padding: 14px 18px; }
+.pt-privacy p { margin: 0 0 8px !important; } .pt-privacy ul { margin: 0; padding-left: 20px; color: #344255; font-size: .93rem; }
+@media (max-width: 560px) { #pt-canvas { height: 240px; } .pt-readout b { font-size: 2rem; } }
+@media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }

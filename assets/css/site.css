@@ -810,3 +810,18 @@ a.org-logo:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -14px rg
   .home-research .card-authors { font-size: .76rem; margin: 4px 0; }
   .home-research .desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 5px 0 8px; }
 }
+
+/* "Try it with your own voice" callout on research pages */
+.voice-cta {
+  display: flex; align-items: center; gap: 16px; margin: 16px 0 0; padding: 14px 18px;
+  background: linear-gradient(120deg, #eef5fe, #f6fbff); border: 1px solid #c9def4; border-radius: 14px;
+  color: var(--text); transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+.voice-cta:hover { text-decoration: none; border-color: #8cc0ee; box-shadow: 0 10px 26px -18px rgba(37,99,235,.7); transform: translateY(-2px); }
+.vc-ico { flex-shrink: 0; width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: linear-gradient(140deg, #2563eb, #0ea5e9); color: #fff; }
+.vc-ico svg { width: 21px; height: 21px; }
+.vc-text { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.vc-text b { font-size: .98rem; }
+.vc-text small { color: var(--muted); font-size: .86rem; line-height: 1.45; }
+.vc-go { flex-shrink: 0; font-size: .88rem; font-weight: 600; color: var(--blue); white-space: nowrap; }
+@media (max-width: 600px) { .voice-cta { flex-wrap: wrap; } .vc-go { width: 100%; padding-left: 58px; } }
