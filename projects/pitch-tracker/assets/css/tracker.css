@@ -21,3 +21,5 @@
 .pt-privacy p { margin: 0 0 8px !important; } .pt-privacy ul { margin: 0; padding-left: 20px; color: #344255; font-size: .93rem; }
 @media (max-width: 560px) { #pt-canvas { height: 240px; } .pt-readout b { font-size: 2rem; } }
 @media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
+
+.pt-disclaimer { margin: -14px 0 22px !important; padding: 10px 14px; border-radius: 10px; background: #fff8e6; border: 1px solid #f3dfa8; color: #5c4600; font-size: .88rem; line-height: 1.5; }

@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../assets/css/site.css?v=80675a1d4672">
-  <link rel="stylesheet" href="assets/css/tracker.css?v=13b190b760b5">
+  <link rel="stylesheet" href="assets/css/tracker.css?v=eff1abd7023e">
 </head>
 <body>
   <nav class="topnav">
@@ -31,6 +31,8 @@
       <h1 class="pp-title">Live Pitch Tracker<br><span>See the melody of your voice</span></h1>
       <p class="pp-affil">The same kind of pitch (F0) contour I analyze in my <a href="../../research/cross-lingual-prosody/">prosody research</a>, drawn live from your microphone.</p>
     </header>
+
+    <p class="pt-disclaimer"><b>Note:</b> this is an interactive demo, not the method used in my papers. The papers extract pitch offline with pYAAPT, interpolate unvoiced regions, and align words across languages before measuring correspondence. This tracker uses a simpler real-time algorithm (YIN), so its contours and values will differ from the papers' figures.</p>
 
     <div class="pt-card">
       <div class="pt-top">
@@ -72,11 +74,12 @@
     <section>
       <h2>How it works</h2>
       <p>The tracker uses the <b>YIN</b> algorithm (de Cheveigné &amp; Kawahara, 2002). About 66 times per second it compares a slice of your voice with time-shifted copies of itself; the shift where the signal best repeats is one pitch period. A confidence threshold separates voiced sounds from silence and consonants, and a short median filter removes stray jumps. The pitch axis is logarithmic, so equal musical steps look equal.</p>
+      <p>This is a different method from my research pipeline, which uses offline pYAAPT pitch extraction, interpolation through unvoiced regions, word timestamps, and cross-lingual alignment. Use the tracker to explore your own voice, not to reproduce the papers' numbers.</p>
     </section>
     <noscript><p>The pitch tracker needs JavaScript enabled.</p></noscript>
   </main>
   <footer><span>© <span id="year"></span> Haopeng (Jack) Xie</span><span>Your voice never leaves your device.</span></footer>
-  <script src="assets/js/pitch-tracker.js?v=ed092666ebcd"></script>
+  <script src="assets/js/pitch-tracker.js?v=1908786a126a"></script>
   <script src="../../assets/js/site.js?v=4989c2d1e2af"></script>
 </body>
 </html>

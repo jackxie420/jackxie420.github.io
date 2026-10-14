@@ -78,7 +78,7 @@ if (typeof module !== 'undefined') module.exports = { yinPitch };
   }
 
   function draw() {
-    const w = canvas.clientWidth, h = canvas.clientHeight, L = 48, R = 12, T = 12, B = 26;
+    const w = canvas.clientWidth, h = canvas.clientHeight, L = 62, R = 12, T = 12, B = 26;
     ctx.clearRect(0, 0, w, h);
     ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, w, h);
     const [lo, hi] = range, ly = v => T + (h - T - B) * (1 - Math.log(v / lo) / Math.log(hi / lo));
