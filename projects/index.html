@@ -8,8 +8,17 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234a9fe0'/><text x='50' y='66' font-size='46' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' fill='white'>JX</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kalam:wght@400;700&family=Patrick+Hand&family=Rye&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/site.css?v=80675a1d4672">
+  <link rel="stylesheet" href="../assets/css/wood.css">
+  <script>
+    // Apply the saved look before first paint; ?look=wood or ?look=classic overrides it.
+    (function () {
+      let look = new URLSearchParams(location.search).get('look');
+      try { if (look) localStorage.setItem('look', look); else look = localStorage.getItem('look'); } catch (e) {}
+      if (look === 'wood') document.documentElement.classList.add('wood');
+    })();
+  </script>
 </head>
 <body>
   <nav class="topnav">
@@ -29,7 +38,7 @@
     <p class="page-intro">Earlier and just-for-fun projects, separate from my research.</p>
     <div class="projects">
       <a class="item proj play" href="pitch-tracker/">
-        <img src="pitch-tracker/assets/images/preview.svg" alt="A live pitch contour of a voice drawn on a chart">
+        <span class="proj-photo"><img src="pitch-tracker/assets/images/preview.svg" alt="A live pitch contour of a voice drawn on a chart"></span>
         <div>
           <h3>Live Pitch Tracker</h3>
           <p>Speak or sing and watch your voice's pitch contour drawn live in the browser. No audio is recorded or stored.</p>
@@ -37,7 +46,7 @@
         </div>
       </a>
       <a class="item proj play" href="holdem/">
-        <img src="holdem/assets/images/preview.svg" alt="Texas Hold’em hole cards and a flop on a green poker table">
+        <span class="proj-photo"><img src="holdem/assets/images/preview.svg" alt="Texas Hold’em hole cards and a flop on a green poker table"></span>
         <div>
           <h3>Hold’em Lab · GTO &amp; Equity</h3>
           <p>Select your cards, calculate equity on every street, and explore sourced preflop strategies.</p>
@@ -45,7 +54,7 @@
         </div>
       </a>
       <a class="item proj play" href="gomoku/">
-        <img src="gomoku/assets/images/preview.svg" alt="Black and white Gomoku stones on a wooden grid">
+        <span class="proj-photo"><img src="gomoku/assets/images/preview.svg" alt="Black and white Gomoku stones on a wooden grid"></span>
         <div>
           <h3>五子棋 · Gomoku</h3>
           <p>A little strategy break. Play five in a row against the computer or a friend.</p>
@@ -53,7 +62,7 @@
         </div>
       </a>
       <a class="item proj play art" href="../projects/oil-portrait/">
-        <img src="oil-portrait/assets/images/oil-portrait.jpg" alt="Master copy of Cecilia Beaux's Man with the Cat: a seated man in a cream suit with an orange cat on his lap">
+        <span class="proj-photo"><img src="oil-portrait/assets/images/oil-portrait.jpg" alt="Master copy of Cecilia Beaux's Man with the Cat: a seated man in a cream suit with an orange cat on his lap"></span>
         <div>
           <h3>Man with the Cat (master copy)</h3>
           <p>An oil-on-canvas master copy of Cecilia Beaux's 1898 portrait <i>Man with the Cat (Henry Sturgis Drinker)</i>.</p>
@@ -61,7 +70,7 @@
         </div>
       </a>
       <a class="item proj play" href="../projects/hangman/">
-        <img src="hangman/assets/images/emi-martinez-save.jpg" alt="Emi Martínez making a save">
+        <span class="proj-photo"><img src="hangman/assets/images/emi-martinez-save.jpg" alt="Emi Martínez making a save"></span>
         <div>
           <h3>World Cup Hangman</h3>
           <p>A football-themed hangman game built in plain JavaScript, in honor of Emi Martínez.</p>
@@ -87,5 +96,6 @@
   </footer>
 
   <script src="../assets/js/site.js?v=4989c2d1e2af"></script>
+  <script src="../assets/js/look.js"></script>
 </body>
 </html>

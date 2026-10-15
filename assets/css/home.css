@@ -1,6 +1,6 @@
 /* Homepage cat drawing in its original position. */
 .home-art {
-  position: fixed; z-index: 0; pointer-events: none; user-select: none;
+  position: fixed; z-index: -1; pointer-events: none; user-select: none;
   left: calc(max(0px, (100vw - 1040px) / 2) + 20px); bottom: 104px;
   width: min(215px, 18vw, calc((100vh - 662px) / 1.35)); height: auto; opacity: .55;
 }
