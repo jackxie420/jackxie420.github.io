@@ -13,11 +13,12 @@
   <link rel="stylesheet" href="assets/css/experience.css?v=308136d2b4e9">
   <link rel="stylesheet" href="../assets/css/wood.css">
   <script>
-    // Apply the saved look before first paint; ?look=wood or ?look=classic overrides it.
+    // Apply the saved look before first paint (wood unless the visitor chose classic);
+    // ?look=wood or ?look=classic overrides it.
     (function () {
       let look = new URLSearchParams(location.search).get('look');
       try { if (look) localStorage.setItem('look', look); else look = localStorage.getItem('look'); } catch (e) {}
-      if (look === 'wood') document.documentElement.classList.add('wood');
+      if (look !== 'classic') document.documentElement.classList.add('wood');
     })();
   </script>
 </head>

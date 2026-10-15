@@ -11,6 +11,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../assets/css/site.css?v=80675a1d4672">
   <link rel="stylesheet" href="assets/css/lab.css?v=bc5199231e12">
+  <link rel="stylesheet" href="../../assets/css/wood-colors.css">
+  <script>
+    // Apply the saved look before first paint (wood unless the visitor chose classic);
+    // ?look=wood or ?look=classic overrides it.
+    (function () {
+      let look = new URLSearchParams(location.search).get('look');
+      try { if (look) localStorage.setItem('look', look); else look = localStorage.getItem('look'); } catch (e) {}
+      if (look !== 'classic') document.documentElement.classList.add('wood');
+    })();
+  </script>
 </head>
 <body>
   <nav class="topnav"><div class="inner"><a class="brand" href="../../">Haopeng (Jack) Xie</a><ul><li><a href="../../">Home</a></li><li><a href="../../research/">Research &amp; Publications</a></li><li><a href="../../experience/">Experience</a></li><li><a href="../" class="active">Fun Projects</a></li></ul></div></nav>
@@ -68,5 +78,6 @@
   </main>
   <footer><span>© <span id="year"></span> Haopeng (Jack) Xie</span><span>Study the decisions, not just the outcomes.</span></footer>
   <script type="module" src="assets/js/lab.js?v=856d5f639f99"></script><script src="../../assets/js/site.js?v=4989c2d1e2af"></script>
+  <script src="../../assets/js/look.js"></script>
 </body>
 </html>

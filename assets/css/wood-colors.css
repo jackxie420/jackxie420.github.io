@@ -1,0 +1,154 @@
+/* Wood mode, color only, for the detail pages: the classic layout re-tinted to the
+   board's yellow-brown palette. Generated from the page stylesheets: each blue or slate
+   color is shifted to amber-brown with its lightness kept. Data colors in figures
+   (e.g. the blue English series) and brand colors are unchanged. */
+html.wood {
+  --bg: #f7f0e3; --card: #fffaf1; --text: #33271b; --muted: #6e5f4d; --line: #eadcc4;
+  --blue: #9c5f22; --blue-dark: #7d4a17; --blue-soft: #f4e6cf;
+}
+
+/* Look switch */
+.look-toggle {
+  position: fixed; right: 18px; bottom: 18px; z-index: 50;
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  font: 600 .85rem/1 var(--sans); color: var(--blue-dark);
+  background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 9px 14px 9px 10px;
+  box-shadow: 0 8px 22px -12px rgba(16, 40, 80, .55); transition: transform .2s;
+}
+.look-toggle:hover { transform: translateY(-2px); }
+.look-toggle .swatch {
+  width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+  background: url(../images/textures/wood.jpg) center / 300px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .25);
+}
+html.wood .look-toggle { box-shadow: 0 8px 22px -12px rgba(80, 48, 16, .55); }
+html.wood .look-toggle .swatch { background: linear-gradient(140deg, #8cc8f5, #3d93db); }
+
+
+/* assets/css/site.css */
+html.wood .topnav { background: rgba(252, 249, 246, 0.85); }
+html.wood .avatar { background: linear-gradient(140deg, #d8a264, #b67730); box-shadow: 0 8px 24px -10px rgba(166, 110, 47, 0.6); }
+html.wood .item ul { color: #554634; }
+html.wood .venue { color: #554634; }
+html.wood a.proj:hover { border-color: #dcac75; box-shadow: 0 8px 22px -14px rgba(166, 110, 47, 0.55); }
+html.wood .linkbtns a:hover { background: #f4e9dd; }
+html.wood a.rcard:hover { border-color: #dcac75; box-shadow: 0 8px 22px -14px rgba(166, 110, 47, 0.55); }
+html.wood .rcard .desc { color: #554634; }
+html.wood .pp-authors a { border-bottom: 1px solid #deb280; }
+html.wood .pp-links span { background: #efeae4; }
+html.wood .finding > p { color: #554634; }
+html.wood .legend .tick { border-left: 2px dashed #675b4d; }
+html.wood .seg { background: #f6f0ea; }
+html.wood .seg button[aria-pressed="true"] { box-shadow: 0 1px 3px rgba(65, 49, 31, 0.12); }
+html.wood .bar-zero { background: #bfad97; }
+html.wood .bar-base { border-left: 2px dashed #675b4d; }
+html.wood .viz-tip { background: #392c1d; }
+html.wood .viz-tip b { color: #ddad77; }
+html.wood .step-tabs { background: #fdfcfa; }
+html.wood .step-tabs button i { background: #f3ece4; }
+html.wood .step-panel p { color: #554634; }
+html.wood .bib pre { background: #392c1d; color: #f4eade; }
+html.wood .legend .ln.dash { border-top: 2px dashed #8d7d6b; }
+html.wood #fig2 .f-axis { fill: #7d7264; }
+html.wood #fig2 .f-grid { stroke: #f6f2ee; }
+html.wood #fig2 .f-grid.mean { stroke: #c5b19a; }
+html.wood #fig2 .f-word { stroke: #efe9e2; }
+html.wood #fig2 .f-word.aligned { fill: #fdfaf7; }
+html.wood #fig2 .f-link { stroke: #b6a490; }
+html.wood #fig2 .f-cross { stroke: #392c1d; }
+html.wood #fig2 .f-band.hot { fill: rgba(165, 109, 45, 0.07); }
+html.wood #fig2 .f-sep { stroke: #ede7e0; }
+html.wood .readout { color: #554634; }
+html.wood .job-hero { background: linear-gradient(135deg, #f8f1ea 0%, #fcf9f6 60%, #ffffff 100%); }
+html.wood .job-icon { background: linear-gradient(140deg, #d8a264, #b67730); box-shadow: 0 10px 24px -12px rgba(166, 110, 47, 0.7); }
+html.wood .contrib-num { color: #deb280; }
+html.wood .contrib p { color: #554634; }
+html.wood .flow-node:hover { border-color: #dcac75; }
+html.wood .flow-node.mine { background: #f9f4ee; border-color: #dcac75; }
+html.wood .flow-node.on { box-shadow: 0 6px 18px -10px rgba(166, 110, 47, 0.6); }
+html.wood .flow-detail { color: #554634; }
+html.wood .legend .ln.mean { border-top: 2px dashed #392c1d; }
+html.wood .legend .ln.zero { border-top: 1.5px solid #9c8c79; }
+html.wood #dist .d-grid { stroke: #f6f2ee; }
+html.wood #dist .d-axis { fill: #7d7264; }
+html.wood #dist .d-bar { fill: #daa569; }
+html.wood #dist .d-bar.hot { fill: #815522; }
+html.wood #dist .d-thr { fill: rgba(166, 110, 47, 0.06); }
+html.wood #dist .d-zero { stroke: #9c8c79; }
+html.wood #dist .d-mean { stroke: #392c1d; }
+html.wood #dist .d-shuf { stroke: #675b4d; }
+html.wood #dist .d-label { fill: #392c1d; }
+html.wood #dist .d-label.muted { fill: #675b4d; }
+html.wood #dist .d-hit.hot { fill: rgba(57, 44, 29, 0.06); }
+html.wood .art-zoom img { box-shadow: 0 2px 4px rgba(65, 49, 31, 0.08), 0 24px 48px -20px rgba(65, 49, 31, 0.45); }
+html.wood .art-info p { color: #554634; }
+html.wood .timeline::before { background: linear-gradient(180deg, #d8a264, #f3e7da 85%, transparent); }
+html.wood .tl-node { border: 2px solid #deb280; box-shadow: 0 4px 12px -6px rgba(166, 110, 47, 0.5); }
+html.wood .tl-item.current .tl-node { background: linear-gradient(140deg, #d8a264, #b67730); }
+html.wood .tl-item.current .tl-node::after { border: 2px solid #d8a264; }
+html.wood .tl-card:hover { border-color: #dcac75; box-shadow: 0 10px 26px -16px rgba(166, 110, 47, 0.6); }
+html.wood .tl-sum { color: #554634; }
+html.wood img.avatar { box-shadow: 0 10px 28px -12px rgba(65, 49, 31, 0.55); }
+html.wood .org-card { box-shadow: 0 14px 34px -26px rgba(65, 49, 31, 0.45); }
+html.wood a.org-logo:hover { box-shadow: 0 10px 22px -14px rgba(65, 49, 31, 0.5); }
+html.wood .steps-tl li::before { background: #f0e7dd; }
+html.wood .steps-tl li.now .dot { box-shadow: 0 0 0 4px rgba(166, 110, 47, 0.16); }
+html.wood .steps-tl p { color: #554634; }
+html.wood .feature-card:hover { border-color: #dcac75; box-shadow: 0 18px 40px -26px rgba(65, 49, 31, 0.55); }
+html.wood .fc-body p { color: #554634; }
+html.wood .spark-wrap { background: linear-gradient(160deg, #fdfbf8, #faf6f1); }
+html.wood .spark .sp-sep { stroke: #ece4db; }
+html.wood .spark .sp-mean { stroke: #bfad97; }
+html.wood .toc a:hover { border-color: #dcac75; }
+html.wood .fig-svg .f-axis { fill: #7d7264; }
+html.wood .fig-svg .f-grid { stroke: #f6f2ee; }
+html.wood .fig-svg .f-grid.mean { stroke: #c5b19a; }
+html.wood .fig-svg .f-link { stroke: #b6a490; }
+html.wood .fig-svg .f-cross { stroke: #392c1d; }
+html.wood .fig-svg .f-band.hot { fill: rgba(165, 109, 45, 0.07); }
+html.wood .fig-svg .f-sep { stroke: #ede7e0; }
+html.wood .fig-svg .d-grid-l { stroke: #f6f2ee; }
+html.wood .fig-svg .d-zero-l { stroke: #9c8c79; }
+html.wood .mini-btn:hover { border-color: #dcac75; }
+html.wood .followup:hover { border-color: #dcac75; box-shadow: 0 8px 22px -14px rgba(166, 110, 47, 0.55); }
+html.wood .followup .desc { color: #554634; }
+html.wood .pp-links a.hl { background: linear-gradient(120deg, #b2742d, #a26929); box-shadow: 0 8px 22px -10px rgba(178, 116, 45, 0.7); }
+html.wood .pp-links a.hl:hover { background: linear-gradient(120deg, #a16828, #845621); }
+html.wood .play-btn:hover { border-color: #dcac75; }
+html.wood .voice-cta { background: linear-gradient(120deg, #fbf6f1, #fdfbf8); border: 1px solid #efe0ce; }
+html.wood .voice-cta:hover { border-color: #d79f5f; box-shadow: 0 10px 26px -18px rgba(178, 116, 45, 0.7); }
+html.wood .vc-ico { background: linear-gradient(140deg, #b2742d, #a26929); }
+
+/* projects/gomoku/assets/css/game.css */
+html.wood .intersection.winning::before { box-shadow: 0 0 0 3px #a66e2f, 0 0 0 5px #fff7; }
+@media (hover: hover) {
+  html.wood .board[data-locked='false'][data-turn='1'] .intersection:not(.occupied):hover::before { background: #392c1d; }
+}
+html.wood .player.active { border-color: #dcac75; }
+
+/* projects/holdem/assets/css/lab.css */
+html.wood .street-tabs { background: #f7f3ee; }
+html.wood .street-tabs button[aria-pressed='true'] { box-shadow: 0 1px 4px rgba(57, 44, 29, 0.102); }
+html.wood .slot { border: 1px solid #e4dace; box-shadow: 0 3px 6px -4px rgba(95, 78, 59, 0.502); }
+html.wood .slot.empty { background: #fdfbf9; color: #ab9780; }
+html.wood .slot[aria-pressed='true'] { box-shadow: 0 0 0 3px rgba(166, 110, 47, 0.078); }
+html.wood .deck-card:disabled { background: #f7f4f1; }
+html.wood .lab-panel :is(select, html.wood input, html.wood textarea) { border: 1px solid #e4dace; }
+html.wood .primary-button:hover { background: #734b1d; }
+html.wood .equity-track { background: #f2eee9; }
+html.wood .lose-dot { background: #b1a08d; }
+html.wood .progress { background: #f7f3ee; }
+html.wood .strategy-track { background: #f6f2ee; }
+html.wood .range-matrix button { color: #392c1d; }
+html.wood .range-matrix button[aria-pressed='true'] { outline: 2px solid #392c1d; }
+
+/* projects/pitch-tracker/assets/css/tracker.css */
+html.wood .pt-card { box-shadow: 0 14px 34px -26px rgba(65, 49, 31, 0.45); }
+html.wood .pt-readout em { color: #554634; }
+html.wood .pt-btn { background: linear-gradient(120deg, #b2742d, #a26929); box-shadow: 0 8px 22px -10px rgba(178, 116, 45, 0.7); }
+html.wood .pt-tips li { color: #554634; }
+html.wood .pt-privacy ul { color: #554634; }
+
+/* projects/hangman (inline styles) */
+html.wood .topnav { background: rgba(252, 249, 246, 0.85); }
+html.wood .letter-btn:hover:not(:disabled) { border-color: #dcac75; }
+html.wood .letter-btn:disabled { background: #f5f2ef; color: #aa9d8e; }

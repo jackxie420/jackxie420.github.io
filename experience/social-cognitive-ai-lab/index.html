@@ -10,6 +10,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../assets/css/site.css?v=80675a1d4672">
+  <link rel="stylesheet" href="../../assets/css/wood-colors.css">
+  <script>
+    // Apply the saved look before first paint (wood unless the visitor chose classic);
+    // ?look=wood or ?look=classic overrides it.
+    (function () {
+      let look = new URLSearchParams(location.search).get('look');
+      try { if (look) localStorage.setItem('look', look); else look = localStorage.getItem('look'); } catch (e) {}
+      if (look !== 'classic') document.documentElement.classList.add('wood');
+    })();
+  </script>
 </head>
 <body>
   <nav class="topnav">
@@ -82,5 +92,6 @@
   </footer>
 
   <script src="../../assets/js/site.js?v=4989c2d1e2af"></script>
+  <script src="../../assets/js/look.js"></script>
 </body>
 </html>
