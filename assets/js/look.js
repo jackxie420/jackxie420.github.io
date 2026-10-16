@@ -8,12 +8,16 @@
     btn.className = 'look-toggle';
     btn.type = 'button';
     btn.innerHTML = '<span class="swatch" aria-hidden="true"></span><span class="label"></span>';
-    document.body.appendChild(btn);
   }
+  // Sits at the right end of the top bar, out of the way of the page content.
+  (document.querySelector('.topnav .inner') || document.body).appendChild(btn);
   const sync = () => {
     const wood = root.classList.contains('wood');
+    const label = wood ? 'Classic look' : 'Wood board look';
     btn.setAttribute('aria-pressed', wood);
-    btn.querySelector('.label').textContent = wood ? 'Classic look' : 'Wood board look';
+    btn.setAttribute('aria-label', 'Switch to ' + label.toLowerCase());
+    btn.title = 'Switch to ' + label.toLowerCase();
+    btn.querySelector('.label').textContent = label;
   };
   btn.addEventListener('click', () => {
     root.classList.toggle('wood');
