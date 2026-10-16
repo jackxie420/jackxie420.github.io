@@ -466,5 +466,23 @@ html.wood .experience-media img, html.wood .hockey .experience-media img {
 html.wood .rcard, html.wood a.experience-card, html.wood .home-research .rcard.with-thumb { overflow: visible; }
 html.wood .rcard::after { inset: -7px; }
 
+/* Phones: stack the image on top of the text in the Experience cards and the Home
+   publication cards, instead of squeezing it into a narrow side column. */
+@media (max-width: 640px) {
+  html.wood a.experience-card { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  html.wood .experience-media { padding: 18px 16px 6px; }
+  html.wood .experience-media img, html.wood .hockey .experience-media img { width: auto; max-width: 70%; max-height: 120px; }
+  html.wood .experience-content {
+    padding: 16px 18px 18px;
+    background: url(../images/textures/pencil-dash-h.png) left top / 200px 6px repeat-x;
+  }
+  html.wood .list.eq.home-research { grid-auto-rows: auto; }
+  html.wood .list.eq.home-research > li, html.wood .list.eq.home-research > li > .rcard { height: auto; }
+  html.wood .home-research .rcard.with-thumb { grid-template-columns: minmax(0, 1fr); row-gap: 4px; align-content: start; }
+  html.wood .home-research .rthumb { position: relative; width: auto; height: auto; min-height: 0; margin: 14px 14px 0; }
+  html.wood .home-research .rthumb img { position: static; width: 100%; height: auto; }
+  html.wood .home-research .rbody { padding: 10px 18px 18px; }
+}
+
 /* Content is visible right away: no scroll fade-in (it left blank papers while scrolling). */
 html.wood.reveal-on .reveal { opacity: 1; transform: none; filter: none; transition: none; }
