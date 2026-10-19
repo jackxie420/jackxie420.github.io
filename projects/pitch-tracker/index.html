@@ -11,16 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../assets/css/site.css?v=80675a1d4672">
   <link rel="stylesheet" href="assets/css/tracker.css?v=eff1abd7023e">
-  <link rel="stylesheet" href="../../assets/css/wood-colors.css">
-  <script>
-    // Apply the saved look before first paint (wood unless the visitor chose classic);
-    // ?look=wood or ?look=classic overrides it.
-    (function () {
-      let look = new URLSearchParams(location.search).get('look');
-      try { if (look) localStorage.setItem('look', look); else look = localStorage.getItem('look'); } catch (e) {}
-      if (look !== 'classic') document.documentElement.classList.add('wood');
-    })();
-  </script>
 </head>
 <body>
   <nav class="topnav">
@@ -91,6 +81,5 @@
   <footer><span>© <span id="year"></span> Haopeng (Jack) Xie</span><span>Your voice never leaves your device.</span></footer>
   <script src="assets/js/pitch-tracker.js?v=1908786a126a"></script>
   <script src="../../assets/js/site.js?v=4989c2d1e2af"></script>
-  <script src="../../assets/js/look.js"></script>
 </body>
 </html>

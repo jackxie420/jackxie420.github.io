@@ -88,16 +88,6 @@
       .letter-btn { width: 34px; height: 34px; }
     }
   </style>
-  <link rel="stylesheet" href="../../assets/css/wood-colors.css">
-  <script>
-    // Apply the saved look before first paint (wood unless the visitor chose classic);
-    // ?look=wood or ?look=classic overrides it.
-    (function () {
-      let look = new URLSearchParams(location.search).get('look');
-      try { if (look) localStorage.setItem('look', look); else look = localStorage.getItem('look'); } catch (e) {}
-      if (look !== 'classic') document.documentElement.classList.add('wood');
-    })();
-  </script>
 </head>
 <body>
   <nav class="topnav">
@@ -307,6 +297,5 @@
     // Start game on load
     restartGame();
   </script>
-  <script src="../../assets/js/look.js"></script>
 </body>
 </html> 
