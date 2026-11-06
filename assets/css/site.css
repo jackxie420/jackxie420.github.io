@@ -476,7 +476,7 @@ a.plain:hover { color: var(--blue); text-decoration: none; }
 @media (max-width: 720px) { .art-layout { grid-template-columns: 1fr; } }
 
 .pp-announce {
-  display: inline-block; margin: -6px 0 20px !important; padding: 8px 16px; border-radius: 10px;
+  display: table; margin: -6px auto 20px !important; padding: 8px 16px; border-radius: 10px; /* own centered line */
   background: #fff8e6; border: 1px solid #f3dfa8; color: #5c4600; font-size: .93rem;
 }
 
